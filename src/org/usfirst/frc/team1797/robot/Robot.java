@@ -2,6 +2,7 @@
 
 package org.usfirst.frc.team1797.robot;
 
+
 import org.usfirst.frc.team1797.robot.commands.ExampleCommand;
 import org.usfirst.frc.team1797.robot.subsystems.ExampleSubsystem;
 
@@ -24,7 +25,7 @@ public class Robot extends IterativeRobot {
 
 	public static final ExampleSubsystem exampleSubsystem = new ExampleSubsystem();
 	//public static final DriveTrain DRIVE_TRAIN = new DriveTrain();
-	public static final DifferentialDrive DRIVE_TRAIN = new DifferentialDrive(RobotMap.leftMotor, RobotMap.rightMotor);
+	public static final DifferentialDrive DRIVE_TRAIN = new DifferentialDrive(RobotMap.left, RobotMap.right);
 	public static OI oi;
 
 	Command autonomousCommand;

@@ -7,8 +7,8 @@ import edu.wpi.first.wpilibj.command.Command;
 /**
  *
  */
-public class DifferentialDriveCommand extends Command {
-	public DifferentialDriveCommand() {
+public class DriveCommand extends Command {
+	public DriveCommand() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
 		// no subsystem needed
