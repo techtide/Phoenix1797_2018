@@ -2,16 +2,16 @@
 
 package org.usfirst.frc.team1797.robot;
 
+import org.usfirst.frc.team1797.robot.commands.ExampleCommand;
+import org.usfirst.frc.team1797.robot.subsystems.ExampleSubsystem;
+
 import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
+import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
-
-import org.usfirst.frc.team1797.robot.commands.ExampleCommand;
-import org.usfirst.frc.team1797.robot.subsystems.DriveTrain;
-import org.usfirst.frc.team1797.robot.subsystems.ExampleSubsystem;
 
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -23,7 +23,8 @@ import org.usfirst.frc.team1797.robot.subsystems.ExampleSubsystem;
 public class Robot extends IterativeRobot {
 
 	public static final ExampleSubsystem exampleSubsystem = new ExampleSubsystem();
-	public static final DriveTrain DRIVE_TRAIN = new DriveTrain();
+	//public static final DriveTrain DRIVE_TRAIN = new DriveTrain();
+	public static final DifferentialDrive DRIVE_TRAIN = new DifferentialDrive(RobotMap.leftMotor, RobotMap.rightMotor);
 	public static OI oi;
 
 	Command autonomousCommand;
@@ -48,7 +49,7 @@ public class Robot extends IterativeRobot {
 	 */
 	@Override
 	public void disabledInit() {
-
+		
 	}
 
 	@Override

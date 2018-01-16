@@ -15,7 +15,6 @@ public class DriveTrain extends Subsystem {
 	
 	private VictorSP left1, left2, right1, right2;
 	
-	
 	public DriveTrain() {
 		left1 = new VictorSP(0);
 		left2 = new VictorSP(1);
