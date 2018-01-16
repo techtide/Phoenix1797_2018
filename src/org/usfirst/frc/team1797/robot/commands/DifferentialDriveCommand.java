@@ -1,6 +1,5 @@
 package org.usfirst.frc.team1797.robot.commands;
 
-import org.usfirst.frc.team1797.robot.OI;
 import org.usfirst.frc.team1797.robot.Robot;
 
 import edu.wpi.first.wpilibj.command.Command;
@@ -8,12 +7,11 @@ import edu.wpi.first.wpilibj.command.Command;
 /**
  *
  */
-public class DriveCommand extends Command {
-
-    public DriveCommand() {
+public class DifferentialDriveCommand extends Command {
+	public DifferentialDriveCommand() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
-    		requires(Robot.DRIVE_TRAIN);
+		// no subsystem needed
     }
 
     // Called just before this Command runs the first time
@@ -28,8 +26,10 @@ public class DriveCommand extends Command {
     		x *= Math.abs(x);
     		y *= Math.abs(y);
     		
-    		Robot.DRIVE_TRAIN.setLeft(y+x);
-    		Robot.DRIVE_TRAIN.setRight(-y+x);
+    		/*Robot.DRIVE_TRAIN.setLeft(y+x);
+    		Robot.DRIVE_TRAIN.setRight(-y+x); */
+    		// 1 (X), 3 (Y) = SPEED, ROTATION
+    		Robot.DRIVE_TRAIN.arcadeDrive(y, x);
     }
 
     // Make this return true when this Command no longer needs to run execute()
@@ -39,7 +39,7 @@ public class DriveCommand extends Command {
 
     // Called once after isFinished returns true
     protected void end() {
-    		Robot.DRIVE_TRAIN.stopDrive();
+    		Robot.DRIVE_TRAIN.stopMotor();
     }
 
     // Called when another command which requires one or more of the same
