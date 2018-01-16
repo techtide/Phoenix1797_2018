@@ -29,7 +29,7 @@ public class DifferentialDriveCommand extends Command {
     		/*Robot.DRIVE_TRAIN.setLeft(y+x);
     		Robot.DRIVE_TRAIN.setRight(-y+x); */
     		// 1 (X), 3 (Y) = SPEED, ROTATION
-    		Robot.DRIVE_TRAIN.arcadeDrive(x, y);
+    		Robot.DRIVE_TRAIN.arcadeDrive(y, x);
     }
 
     // Make this return true when this Command no longer needs to run execute()
