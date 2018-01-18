@@ -23,8 +23,16 @@ public class DriveTrain extends Subsystem {
 	private final SpeedControllerGroup left = new SpeedControllerGroup(left1, left2);
 	private final SpeedControllerGroup right = new SpeedControllerGroup(right1, right2);
 	
-	public final DifferentialDrive DifferentialDrive = new DifferentialDrive(left, right);
+	private final DifferentialDrive DifferentialDrive = new DifferentialDrive(left, right);
 
+	public void arcadeDrive(double x, double z){
+		DifferentialDrive.arcadeDrive(x, z);
+	}
+	
+	public void stopDrive() {
+		DifferentialDrive.stopMotor();
+	}
+	
     public void initDefaultCommand() {
         // Set the default command for a subsystem here.
         //setDefaultCommand(new MySpecialCommand());

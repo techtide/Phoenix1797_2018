@@ -20,16 +20,16 @@ public class DriveCommand extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    		double x = Robot.oi.driverInput.getRawAxis(3);
-    		double y = Robot.oi.driverInput.getRawAxis(1);
+    		double z = Robot.oi.driverInput.getRawAxis(3);
+    		double x = Robot.oi.driverInput.getRawAxis(1);
     		
     		x *= Math.abs(x);
-    		y *= Math.abs(y);
+    		z *= Math.abs(z);
     		
     		/*Robot.DRIVE_TRAIN.setLeft(y+x);
     		Robot.DRIVE_TRAIN.setRight(-y+x); */
     		// 1 (X), 3 (Y) = SPEED, ROTATION
-    		Robot.DRIVE_TRAIN.DifferentialDrive.arcadeDrive(y, x);
+    		Robot.DRIVE_TRAIN.arcadeDrive(x, z);
     }
 
     // Make this return true when this Command no longer needs to run execute()
@@ -39,7 +39,7 @@ public class DriveCommand extends Command {
 
     // Called once after isFinished returns true
     protected void end() {
-    		Robot.DRIVE_TRAIN.DifferentialDrive.stopMotor();
+    		Robot.DRIVE_TRAIN.stopDrive();
     }
 
     // Called when another command which requires one or more of the same

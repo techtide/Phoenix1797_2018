@@ -12,6 +12,7 @@ public class AutoCrossBaseline13 extends Command {
     public AutoCrossBaseline13() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
+    		requires(Robot.DRIVE_TRAIN);
     }
 
     // Called just before this Command runs the first time
