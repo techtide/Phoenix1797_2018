@@ -19,11 +19,5 @@ public class RobotMap {
 	// number and the module. For example you with a rangefinder:
 	// public static int rangefinderPort = 1;
 	// public static int rangefinderModule = 1;
-	public static final VictorSP left1 = new VictorSP(0);
-	public static final VictorSP left2 = new VictorSP(1);
-	public static final VictorSP right1 = new VictorSP(1);
-	public static final VictorSP right2 = new VictorSP(1);
 	
-	public static final SpeedControllerGroup left = new SpeedControllerGroup(left1, left2);
-	public static final SpeedControllerGroup right = new SpeedControllerGroup(right1, right2);
 }
