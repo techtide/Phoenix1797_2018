@@ -1,7 +1,5 @@
 package org.usfirst.frc.team1797.robot.subsystems;
 
-import org.usfirst.frc.team1797.robot.RobotMap;
-
 import edu.wpi.first.wpilibj.SpeedControllerGroup;
 import edu.wpi.first.wpilibj.VictorSP;
 import edu.wpi.first.wpilibj.command.Subsystem;

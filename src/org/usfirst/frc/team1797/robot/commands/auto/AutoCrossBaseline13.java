@@ -1,4 +1,4 @@
-package org.usfirst.frc.team1797.robot.commands;
+package org.usfirst.frc.team1797.robot.commands.auto;
 
 import org.usfirst.frc.team1797.robot.Robot;
 
@@ -7,38 +7,32 @@ import edu.wpi.first.wpilibj.command.Command;
 /**
  *
  */
-public class DriveCommand extends Command {
+public class AutoCrossBaseline13 extends Command {
+
+	private static final double DRIVE_LENGTH = 2; //the time for the command to run for (in seconds)
+	private static final double DRIVE_SPEED = 0.3; // Speed for motors to run at while executing
 	
-	private static final double SENSITIVITY = 0.25;
+	private long startTime = Long.MAX_VALUE; //Similar to last actuation but used for timing motors.
 	
-	public DriveCommand() {
+    public AutoCrossBaseline13() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
-		// no subsystem needed
-		requires(Robot.DRIVE_TRAIN);
+    		requires(Robot.DRIVE_TRAIN);
     }
 
     // Called just before this Command runs the first time
     protected void initialize() {
+    		startTime = System.currentTimeMillis();
+    		Robot.DRIVE_TRAIN.arcadeDrive(DRIVE_SPEED, 0);
     }
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    		double z = Robot.oi.driverInput.getRawAxis(3);
-    		double x = Robot.oi.driverInput.getRawAxis(1);
-    		
-    		x *= Math.abs(x);
-    		z *= Math.abs(z);
-    		
-    		/*Robot.DRIVE_TRAIN.setLeft(y+x);
-    		Robot.DRIVE_TRAIN.setRight(-y+x); */
-    		// 1 (X), 3 (Y) = SPEED, ROTATION
-    		Robot.DRIVE_TRAIN.arcadeDrive(x * SENSITIVITY, z * SENSITIVITY);
     }
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        return false;
+        return System.currentTimeMillis() - startTime >= (DRIVE_LENGTH * 1000);
     }
 
     // Called once after isFinished returns true
