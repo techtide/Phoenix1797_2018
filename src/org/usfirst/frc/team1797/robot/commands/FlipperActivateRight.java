@@ -41,6 +41,12 @@ public class FlipperActivateRight extends Command {
     // Called when another command which requires one or more of the same
     // subsystems is scheduled to run
     protected void interrupted() {
-    		end();
+    	Robot.FLIPPER.retractRight();
+		while(true) {
+			if(System.currentTimeMillis() - Robot.FLIPPER.getLastActuationLeft() >= 1000 && Robot.FLIPPER.isLeftExtended()) {
+    			Robot.FLIPPER.stopRight();
+    			break;
+			}
+		}
     }
 }

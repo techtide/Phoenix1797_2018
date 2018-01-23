@@ -18,6 +18,8 @@ public class Flipper extends Subsystem {
 		rightPiston = new DoubleSolenoid(2, 3);
 		lastActuationLeft = Long.MAX_VALUE;
 		lastActuationRight = Long.MAX_VALUE;
+		isLeftExtended = false;
+		isRightExtended = false;
 	}
 	
 	public boolean isLeftExtended() {
