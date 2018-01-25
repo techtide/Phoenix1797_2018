@@ -1,5 +1,7 @@
 package org.usfirst.frc.team1797.robot.subsystems;
 
+import org.usfirst.frc.team1797.robot.RobotMap;
+
 import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj.command.Subsystem;
 
@@ -14,8 +16,8 @@ public class Flipper extends Subsystem {
 	private boolean isLeftExtended, isRightExtended;
 	
 	public Flipper() {
-		leftPiston = new DoubleSolenoid(0, 1);
-		rightPiston = new DoubleSolenoid(2, 3);
+		leftPiston = new DoubleSolenoid(RobotMap.FLIPPER_PISTON_PORTS.get("left_piston_1"), RobotMap.FLIPPER_PISTON_PORTS.get("left_piston_2"));
+		rightPiston = new DoubleSolenoid(RobotMap.FLIPPER_PISTON_PORTS.get("right_piston_1"), RobotMap.FLIPPER_PISTON_PORTS.get("right_piston_2"));
 		lastActuationLeft = Long.MAX_VALUE;
 		lastActuationRight = Long.MAX_VALUE;
 	}

@@ -1,6 +1,7 @@
 package org.usfirst.frc.team1797.robot.commands;
 
 import org.usfirst.frc.team1797.robot.Robot;
+import org.usfirst.frc.team1797.robot.RobotMap;
 
 import edu.wpi.first.wpilibj.command.Command;
 
@@ -11,8 +12,7 @@ public class FlipperActivateRight extends Command {
 
     public FlipperActivateRight() {
         // Use requires() here to declare subsystem dependencies
-        // eg. requires(chassis);
-    		requires(Robot.FLIPPER);
+       requires(Robot.FLIPPER);
     }
 
     // Called just before this Command runs the first time
@@ -21,16 +21,16 @@ public class FlipperActivateRight extends Command {
     }
 
     // Called repeatedly when this Command is scheduled to run
-    protected void execute() {
-    		if(System.currentTimeMillis() - Robot.FLIPPER.getLastActuationRight() >= 1000 && Robot.FLIPPER.isRightExtended()) {
+    protected void execute() { // read FlipperActivateLeft.java doc
+    		if(System.currentTimeMillis() - Robot.FLIPPER.getLastActuationRight() >= RobotMap.FLIPPER_PISTON_TIME && Robot.FLIPPER.isRightExtended()) {
     			Robot.FLIPPER.stopRight();
     			Robot.FLIPPER.retractRight();
     		}
     }
 
     // Make this return true when this Command no longer needs to run execute()
-    protected boolean isFinished() {
-    		return (System.currentTimeMillis() - Robot.FLIPPER.getLastActuationRight() >= 1000) && !Robot.FLIPPER.isRightExtended();
+    protected boolean isFinished() { // read FlipperActivateLeft.java doc
+    		return (System.currentTimeMillis() - Robot.FLIPPER.getLastActuationRight() >= RobotMap.FLIPPER_PISTON_TIME) && !Robot.FLIPPER.isRightExtended();
     }
 
     // Called once after isFinished returns true

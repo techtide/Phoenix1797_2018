@@ -35,6 +35,6 @@ public class OI {
 	// until it is finished as determined by it's isFinished method.
 	// button.whenReleased(new ExampleCommand());
 	
-	public Joystick driverInput = new Joystick(0);
-	public Joystick operatorInput = new Joystick(1);
+	public Joystick driverInput = new Joystick(RobotMap.DRIVER_CONTROLLER_PORT);
+	public Joystick operatorInput = new Joystick(RobotMap.OPERATOR_CONTROLLER_PORT);
 }
