@@ -16,8 +16,8 @@ public class Flipper extends Subsystem {
 	private boolean isLeftExtended, isRightExtended;
 	
 	public Flipper() {
-		leftPiston = new DoubleSolenoid(RobotMap.FLIPPER_PISTON_PORTS.get("left_piston_1"), RobotMap.FLIPPER_PISTON_PORTS.get("left_piston_2"));
-		rightPiston = new DoubleSolenoid(RobotMap.FLIPPER_PISTON_PORTS.get("right_piston_1"), RobotMap.FLIPPER_PISTON_PORTS.get("right_piston_2"));
+		leftPiston = new DoubleSolenoid(RobotMap.getPort("left_piston_1"), RobotMap.getPort("left_piston_2"));
+		rightPiston = new DoubleSolenoid(RobotMap.getPort("right_piston_1"), RobotMap.getPort("right_piston_2"));
 		lastActuationLeft = Long.MAX_VALUE;
 		lastActuationRight = Long.MAX_VALUE;
 	}

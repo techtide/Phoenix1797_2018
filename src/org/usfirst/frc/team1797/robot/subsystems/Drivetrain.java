@@ -16,10 +16,10 @@ public class Drivetrain extends Subsystem {
     // Put methods for controlling this subsystem
     // here. Call these from Commands.
 	
-	private final VictorSP left1 = new VictorSP(RobotMap.DRIVETRAIN_MOTOR_PORTS.get("left_motor_1"));
-	private final VictorSP left2 = new VictorSP(RobotMap.DRIVETRAIN_MOTOR_PORTS.get("left_motor_2"));
-	private final VictorSP right1 = new VictorSP(RobotMap.DRIVETRAIN_MOTOR_PORTS.get("right_motor_1"));
-	private final VictorSP right2 = new VictorSP(RobotMap.DRIVETRAIN_MOTOR_PORTS.get("right_motor_2"));
+	private final VictorSP left1 = new VictorSP(RobotMap.getPort("left_motor_1"));
+	private final VictorSP left2 = new VictorSP(RobotMap.getPort("left_motor_2"));
+	private final VictorSP right1 = new VictorSP(RobotMap.getPort("right_motor_1"));
+	private final VictorSP right2 = new VictorSP(RobotMap.getPort("right_motor_2"));
 	
 	private final SpeedControllerGroup left = new SpeedControllerGroup(left1, left2);
 	private final SpeedControllerGroup right = new SpeedControllerGroup(right1, right2);

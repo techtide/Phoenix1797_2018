@@ -9,6 +9,7 @@ import edu.wpi.first.wpilibj.command.Command;
  */
 public class AutoCrossBaseline13 extends Command {
 
+	//These variables will stay here because they just regard this stuff
 	private static final double DRIVE_LENGTH = 2; //the time for the command to run for (in seconds)
 	private static final double DRIVE_SPEED = 0.3; // Speed for motors to run at while executing
 	
@@ -16,8 +17,7 @@ public class AutoCrossBaseline13 extends Command {
 	
     public AutoCrossBaseline13() {
         // Use requires() here to declare subsystem dependencies
-        // eg. requires(chassis);
-    		requires(Robot.DRIVE_TRAIN);
+        requires(Robot.DRIVE_TRAIN);
     }
 
     // Called just before this Command runs the first time
