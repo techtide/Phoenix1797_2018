@@ -21,6 +21,8 @@ public class Ramp extends Subsystem {
 	
 	private long pistonOneActuation, pistonTwoActuation, pistonThreeActuation; 
 	
+	private long lastMainActuation;
+	
     public void initDefaultCommand() {
         // Set the default command for a subsystem here.
         //setDefaultCommand(new MySpecialCommand());
@@ -41,9 +43,14 @@ public class Ramp extends Subsystem {
 		return isThreeExtended;
 	}
 	
+	public long getLastMainActuation() {
+		return lastMainActuation;
+	}
+	
 	public void extendPistonOne() {
 		pistonOne.set(DoubleSolenoid.Value.kForward);
 		lastActuationOne = System.currentTimeMillis();
+		lastMainActuation = System.currentTimeMillis();
 		isOneExtended = true;
 	}
 	
@@ -55,6 +62,7 @@ public class Ramp extends Subsystem {
 	public void extendPistonTwo() {
 		pistonTwo.set(DoubleSolenoid.Value.kForward);
 		lastActuationTwo = System.currentTimeMillis();
+		lastMainActuation = System.currentTimeMillis();
 		isTwoExtended = true;
 	}
 	
@@ -66,6 +74,7 @@ public class Ramp extends Subsystem {
 	public void extendPistonThree() {
 		pistonOne.set(DoubleSolenoid.Value.kForward);
 		lastActuationOne = System.currentTimeMillis();
+		lastMainActuation = System.currentTimeMillis();
 		isOneExtended = true;
 	}
 	
@@ -89,19 +98,21 @@ public class Ramp extends Subsystem {
 	public void retractPistonOne() {
 		pistonOne.set(DoubleSolenoid.Value.kReverse);
 		lastActuationOne = System.currentTimeMillis();
+		lastMainActuation = System.currentTimeMillis();
 		isOneExtended = false;
 	}
 	
 	public void retractPistonTwo() {
 		pistonTwo.set(DoubleSolenoid.Value.kReverse);
 		lastActuationTwo = System.currentTimeMillis();
+		lastMainActuation = System.currentTimeMillis();
 		isTwoExtended = false;
 	}
 	
 	public void retractPistonThree() {
 		pistonThree.set(DoubleSolenoid.Value.kReverse);
 		lastActuationThree = System.currentTimeMillis();
+		lastMainActuation = System.currentTimeMillis();
 		isThreeExtended = false;
-	}
-	
+	}	
 }
