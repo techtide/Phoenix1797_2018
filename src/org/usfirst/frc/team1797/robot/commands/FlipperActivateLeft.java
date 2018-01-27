@@ -23,7 +23,7 @@ public class FlipperActivateLeft extends Command {
     // Called repeatedly when this Command is scheduled to run
     protected void execute() { //After {var} seconds of lift the piston will stop and then retract
     		if(System.currentTimeMillis() - Robot.FLIPPER.getLastActuationLeft() >= RobotMap.FLIPPER_PISTON_TIME && Robot.FLIPPER.isLeftExtended()) {
-    			Robot.FLIPPER.stopLeft();
+    			Robot.FLIPPER.stopRight();
     			Robot.FLIPPER.retractLeft();
     		}
     }
@@ -43,11 +43,12 @@ public class FlipperActivateLeft extends Command {
     // subsystems is scheduled to run
     protected void interrupted() {
     	Robot.FLIPPER.retractLeft();
-		while(true) {
+    		/*boolean notStopped = true;
+		while(notStopped) {
 			if(System.currentTimeMillis() - Robot.FLIPPER.getLastActuationLeft() >= 1000 && Robot.FLIPPER.isLeftExtended()) {
     			Robot.FLIPPER.stopLeft();
-    			break;
+    			notStopped = false;
 			}
-		}
+		}*/
     }
 }

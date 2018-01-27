@@ -1,8 +1,5 @@
 package org.usfirst.frc.team1797.robot.utils;
 
-import javax.activation.UnsupportedDataTypeException;
-
-import org.usfirst.frc.team1797.robot.Robot;
 import org.usfirst.frc.team1797.robot.RobotMap;
 
 import edu.wpi.first.wpilibj.Encoder;
