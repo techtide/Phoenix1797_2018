@@ -16,103 +16,38 @@ public class Ramp extends Subsystem {
 	private DoubleSolenoid pistonOne, pistonTwo, pistonThree;
 	
 	private boolean isOneExtended, isTwoExtended, isThreeExtended;
+		
+	private long lastActuation;
 	
-	private double lastActuationOne, lastActuationTwo, lastActuationThree;
-	
-	private long pistonOneActuation, pistonTwoActuation, pistonThreeActuation; 
-	
-	private long lastMainActuation;
+	public Ramp() {
+		pistonOne = new DoubleSolenoid(RobotMap.getPort("ramp_piston_1"),
+				RobotMap.getPort("ramp_piston_1"));
+		pistonTwo = new DoubleSolenoid(RobotMap.getPort("ramp_piston_2"),
+				RobotMap.getPort("ramp_piston_2"));
+		pistonThree = new DoubleSolenoid(RobotMap.getPort("ramp_piston_3"),
+				RobotMap.getPort("right_piston_3"));
+	}
 	
     public void initDefaultCommand() {
         // Set the default command for a subsystem here.
         //setDefaultCommand(new MySpecialCommand());
-    		pistonOne = new DoubleSolenoid(RobotMap.getPort("ramp_piston_1"), RobotMap.getPort("ramp_piston_1"));
-		pistonTwo = new DoubleSolenoid(RobotMap.getPort("ramp_piston_2"), RobotMap.getPort("ramp_piston_2"));
-		pistonThree = new DoubleSolenoid(RobotMap.getPort("ramp_piston_3"), RobotMap.getPort("right_piston_3"));
     }
-    
-    public boolean isOneExtended() {
-    		return isOneExtended;
+    public long getLastActuation() {
+    	return lastActuation;
     }
-	
-    public boolean isTwoExtended() {
-	    	return isTwoExtended;
-	}
-	
-	public boolean isThirdExtended() {
-		return isThreeExtended;
-	}
-	
-	public long getLastMainActuation() {
-		return lastMainActuation;
-	}
-	
-	public void extendPistonOne() {
-		pistonOne.set(DoubleSolenoid.Value.kForward);
-		lastActuationOne = System.currentTimeMillis();
-		lastMainActuation = System.currentTimeMillis();
-		isOneExtended = true;
-	}
-	
-	public void stopPistonOne() {
-		pistonOne.set(DoubleSolenoid.Value.kOff);
-		lastActuationOne = Long.MAX_VALUE;
-	}
-	
-	public void extendPistonTwo() {
-		pistonTwo.set(DoubleSolenoid.Value.kForward);
-		lastActuationTwo = System.currentTimeMillis();
-		lastMainActuation = System.currentTimeMillis();
-		isTwoExtended = true;
-	}
-	
-	public void stopPistonTwo() {
-		pistonOne.set(DoubleSolenoid.Value.kOff);
-		lastActuationTwo = Long.MAX_VALUE;
-	}
-	
-	public void extendPistonThree() {
-		pistonOne.set(DoubleSolenoid.Value.kForward);
-		lastActuationOne = System.currentTimeMillis();
-		lastMainActuation = System.currentTimeMillis();
-		isOneExtended = true;
-	}
-	
-	public void stopPistonThree() {
-		pistonOne.set(DoubleSolenoid.Value.kOff);
-		lastActuationOne = Long.MAX_VALUE;
-	}
-	
-	public long getPistonOneActuation() {
-	 	return pistonOneActuation;
-	}
-	
-	public long getPistonTwoActuation() {
-	 	return pistonTwoActuation;
-	}
-	
-	public long getPistonThirdActuation() {
-	 	return pistonThreeActuation;
-	}
-	
-	public void retractPistonOne() {
-		pistonOne.set(DoubleSolenoid.Value.kReverse);
-		lastActuationOne = System.currentTimeMillis();
-		lastMainActuation = System.currentTimeMillis();
-		isOneExtended = false;
-	}
-	
-	public void retractPistonTwo() {
-		pistonTwo.set(DoubleSolenoid.Value.kReverse);
-		lastActuationTwo = System.currentTimeMillis();
-		lastMainActuation = System.currentTimeMillis();
-		isTwoExtended = false;
-	}
-	
-	public void retractPistonThree() {
-		pistonThree.set(DoubleSolenoid.Value.kReverse);
-		lastActuationThree = System.currentTimeMillis();
-		lastMainActuation = System.currentTimeMillis();
-		isThreeExtended = false;
-	}	
+    public void extend() {
+    	pistonOne.set(DoubleSolenoid.Value.kForward);
+    	pistonTwo.set(DoubleSolenoid.Value.kForward);
+    	pistonThree.set(DoubleSolenoid.Value.kForward);
+    }
+    public void retract() {
+    	pistonOne.set(DoubleSolenoid.Value.kReverse);
+    	pistonTwo.set(DoubleSolenoid.Value.kReverse);
+    	pistonThree.set(DoubleSolenoid.Value.kReverse);
+    }
+    public void stop() {
+    	pistonOne.set(DoubleSolenoid.Value.kOff);
+    	pistonTwo.set(DoubleSolenoid.Value.kOff);
+    	pistonThree.set(DoubleSolenoid.Value.kOff);
+    }
 }
