@@ -53,10 +53,12 @@ public class RobotMap {
 		ROBOT_HARDWARE_PORTS.put("right_motor_2", 3);
 
 		// Flipper Subsystem
-		ROBOT_HARDWARE_PORTS.put("left_piston_1", 0);
-		ROBOT_HARDWARE_PORTS.put("left_piston_2", 1);
-		ROBOT_HARDWARE_PORTS.put("right_piston_1", 2);
-		ROBOT_HARDWARE_PORTS.put("right_piston_2", 3);
+		ROBOT_HARDWARE_PORTS.put("f_left_piston_1", 0);
+		ROBOT_HARDWARE_PORTS.put("f_left_piston_2", 1);
+		ROBOT_HARDWARE_PORTS.put("f_right_piston_1", 2);
+		ROBOT_HARDWARE_PORTS.put("f_right_piston_2", 3);
+		ROBOT_HARDWARE_PORTS.put("f_main_piston_1", 4);
+		ROBOT_HARDWARE_PORTS.put("f_main_piston_2", 5);
 
 		// Encoders
 		ROBOT_HARDWARE_PORTS.put("left_encoder_1", 0);
