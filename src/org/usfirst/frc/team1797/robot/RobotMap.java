@@ -13,6 +13,7 @@ public class RobotMap {
 	//Robot controls
 	public static final int DRIVER_FORWARD_AXIS = 1;
 	public static final int DRIVER_HORIZONTAL_AXIS = 3;
+	
 	public static final int DRIVER_CONTROLLER_PORT = 0;
 	public static final int OPERATOR_CONTROLLER_PORT = 1;
 	
@@ -21,6 +22,9 @@ public class RobotMap {
 	
 	//Time before pistons stop extending/retracting
 	public static final double FLIPPER_PISTON_TIME = 1000; // in milliseconds
+	
+	//Distance between left and right wheels
+	public static final double WHEELBASE_WIDTH = 0.63;
 	
 	//Add hardware ports here with an id and port number.
 	//Ex. ROBOT_HARDWARE_PORTS.put(<port id>, port number);
