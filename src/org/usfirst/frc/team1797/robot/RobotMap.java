@@ -34,6 +34,9 @@ public class RobotMap {
 	// Time before pistons stop extending/retracting
 	public static final double FLIPPER_PISTON_TIME = 1000; // in milliseconds
 
+	// Time before ramp stops extending/retracting
+	public static final double RAMP_PISTON_TIME = 1000; // in milliseconds
+	
 	// Distance between left and right wheels
 	public static final double ROBOT_BASE_WIDTH = 0.63;
 	public static final double ROBOT_WHEEL_WIDTH = 0.15;
@@ -64,6 +67,11 @@ public class RobotMap {
 		ROBOT_HARDWARE_PORTS.put("right_encoder_1", 2);
 		ROBOT_HARDWARE_PORTS.put("right_encoder_2", 3);
 
+		// Ramp Subsystem
+		ROBOT_HARDWARE_PORTS = new HashMap<String, Integer>();
+		ROBOT_HARDWARE_PORTS.put("ramp_piston_1", 0);
+		ROBOT_HARDWARE_PORTS.put("ramp_piston_2", 1);
+		ROBOT_HARDWARE_PORTS.put("ramp_pison_3", 2);
 	}
 
 	public static int getPort(String id) {
