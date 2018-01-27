@@ -1,6 +1,7 @@
 package org.usfirst.frc.team1797.robot.commands;
 
 import org.usfirst.frc.team1797.robot.Robot;
+import org.usfirst.frc.team1797.robot.RobotMap;
 
 import edu.wpi.first.wpilibj.command.Command;
 
@@ -9,12 +10,13 @@ import edu.wpi.first.wpilibj.command.Command;
  */
 public class DriveCommand extends Command {
 	
+<<<<<<< HEAD
 	private static final double SENSITIVITY = 1;
 	
+=======
+>>>>>>> pr/6
 	public DriveCommand() {
-        // Use requires() here to declare subsystem dependencies
-        // eg. requires(chassis);
-		// no subsystem needed
+        //Use requires() here to declare subsystem dependencies
 		requires(Robot.DRIVE_TRAIN);
     }
 
@@ -24,16 +26,24 @@ public class DriveCommand extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
+<<<<<<< HEAD
     		double z = Robot.oi.driverInput.getRawAxis(4);
     		double x = Robot.oi.driverInput.getRawAxis(1);
     		
 //    		x *= Math.abs(x);
 //    		z *= Math.abs(z);
+=======
+    		//gets the raw value from the controllers.
+    		double x = Robot.oi.driverInput.getRawAxis(RobotMap.DRIVER_FORWARD_AXIS);
+    		double z = Robot.oi.driverInput.getRawAxis(RobotMap.DRIVER_HORIZONTAL_AXIS);
     		
-    		/*Robot.DRIVE_TRAIN.setLeft(y+x);
-    		Robot.DRIVE_TRAIN.setRight(-y+x); */
-    		// 1 (X), 3 (Y) = SPEED, ROTATION
-    		Robot.DRIVE_TRAIN.arcadeDrive(x * SENSITIVITY, z * SENSITIVITY);
+    		//function used to alter values
+    		x *= Math.abs(x);
+    		z *= Math.abs(z);
+>>>>>>> pr/6
+    		
+    		//Input to drive
+    		Robot.DRIVE_TRAIN.arcadeDrive(x * RobotMap.DRIVETRAIN_SENSITIVITY, z * RobotMap.DRIVETRAIN_SENSITIVITY);
     }
 
     // Make this return true when this Command no longer needs to run execute()
