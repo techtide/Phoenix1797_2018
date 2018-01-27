@@ -40,6 +40,9 @@ public class RobotMap {
 	// Distance between left and right wheels
 	public static final double ROBOT_BASE_WIDTH = 0.63;
 	public static final double ROBOT_WHEEL_WIDTH = 0.15;
+	private static final double ROBOT_WHEEL_CIRCUMFERENCE = 37.699;
+	private static final int ROBOT_ENCODER_PULSES = 256;
+	public static final double ROBOT_ENCODER_DPP = ROBOT_WHEEL_CIRCUMFERENCE / ROBOT_ENCODER_PULSES;
 
 	// Gyro
 	public static final Gyro gyro = new ADXRS450_Gyro();

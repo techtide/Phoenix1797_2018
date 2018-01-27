@@ -10,41 +10,40 @@ import edu.wpi.first.wpilibj.command.Command;
  */
 public class AutoCrossBaseline13 extends Command {
 
-	//These variables will stay here because they just regard this stuff
-	private static final double DRIVE_LENGTH = 2; //the time for the command to run for (in seconds)
+	// These variables will stay here because they just regard this stuff
+	private static final double DRIVE_DISTANCE = 24; // the distance for the command to run for (in inches)
 	private static final double DRIVE_SPEED = 0.3; // Speed for motors to run at while executing
-	
-	private long startTime = Long.MAX_VALUE; //Similar to last actuation but used for timing motors.
-	
-    public AutoCrossBaseline13() {
-        // Use requires() here to declare subsystem dependencies
-        requires(Robot.DRIVE_TRAIN);
-    }
 
-    // Called just before this Command runs the first time
-    protected void initialize() {
-    	RobotMap.delay();
-    	startTime = System.currentTimeMillis();
-    	Robot.DRIVE_TRAIN.arcadeDrive(DRIVE_SPEED, 0);
-    }
+	public AutoCrossBaseline13() {
+		// Use requires() here to declare subsystem dependencies
+		requires(Robot.DRIVE_TRAIN);
+	}
 
-    // Called repeatedly when this Command is scheduled to run
-    protected void execute() {
-    }
+	// Called just before this Command runs the first time
+	protected void initialize() {
+		RobotMap.delay();
+		Robot.DRIVE_TRAIN.arcadeDrive(DRIVE_SPEED, 0);
+		
+		Robot.DRIVE_TRAIN.resetEncoders();
+	}
 
-    // Make this return true when this Command no longer needs to run execute()
-    protected boolean isFinished() {
-        return System.currentTimeMillis() - startTime >= (DRIVE_LENGTH * 1000);
-    }
+	// Called repeatedly when this Command is scheduled to run
+	protected void execute() {
+	}
 
-    // Called once after isFinished returns true
-    protected void end() {
-    	Robot.DRIVE_TRAIN.stopDrive();
-    }
+	// Make this return true when this Command no longer needs to run execute()
+	protected boolean isFinished() {
+		return Robot.DRIVE_TRAIN.getAverageEncoderDistance() > DRIVE_DISTANCE;
+	}
 
-    // Called when another command which requires one or more of the same
-    // subsystems is scheduled to run
-    protected void interrupted() {
-    	end();
-    }
+	// Called once after isFinished returns true
+	protected void end() {
+		Robot.DRIVE_TRAIN.stopDrive();
+	}
+
+	// Called when another command which requires one or more of the same
+	// subsystems is scheduled to run
+	protected void interrupted() {
+		end();
+	}
 }

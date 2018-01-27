@@ -10,8 +10,6 @@ import edu.wpi.first.wpilibj.command.Command;
  */
 public class DriveCommand extends Command {
 	
-	private static final double SENSITIVITY = 1;
-
 	public DriveCommand() {
         //Use requires() here to declare subsystem dependencies
 		requires(Robot.DRIVE_TRAIN);
