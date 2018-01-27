@@ -3,6 +3,7 @@
 package org.usfirst.frc.team1797.robot;
 
 
+import org.usfirst.frc.team1797.robot.commands.auto.AutoCrossBaseline2Curved;
 import org.usfirst.frc.team1797.robot.subsystems.Drivetrain;
 import org.usfirst.frc.team1797.robot.subsystems.Flipper;
 
@@ -38,6 +39,7 @@ public class Robot extends IterativeRobot {
 	public void robotInit() {
 		oi = new OI();
 		// chooser.addObject("My Auto", new MyAutoCommand());
+		chooser.addObject("Auto 2 Curved", new AutoCrossBaseline2Curved());
 		SmartDashboard.putData("Auto mode", chooser);
 	}
 

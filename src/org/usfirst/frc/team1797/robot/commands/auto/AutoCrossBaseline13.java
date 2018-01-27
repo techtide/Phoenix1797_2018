@@ -1,6 +1,7 @@
 package org.usfirst.frc.team1797.robot.commands.auto;
 
 import org.usfirst.frc.team1797.robot.Robot;
+import org.usfirst.frc.team1797.robot.RobotMap;
 
 import edu.wpi.first.wpilibj.command.Command;
 
@@ -22,8 +23,9 @@ public class AutoCrossBaseline13 extends Command {
 
     // Called just before this Command runs the first time
     protected void initialize() {
-    		startTime = System.currentTimeMillis();
-    		Robot.DRIVE_TRAIN.arcadeDrive(DRIVE_SPEED, 0);
+    	RobotMap.delay();
+    	startTime = System.currentTimeMillis();
+    	Robot.DRIVE_TRAIN.arcadeDrive(DRIVE_SPEED, 0);
     }
 
     // Called repeatedly when this Command is scheduled to run
@@ -37,12 +39,12 @@ public class AutoCrossBaseline13 extends Command {
 
     // Called once after isFinished returns true
     protected void end() {
-    		Robot.DRIVE_TRAIN.stopDrive();
+    	Robot.DRIVE_TRAIN.stopDrive();
     }
 
     // Called when another command which requires one or more of the same
     // subsystems is scheduled to run
     protected void interrupted() {
-    		end();
+    	end();
     }
 }
