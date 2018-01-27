@@ -36,6 +36,7 @@ public class AutoCrossBaseline2Curved extends Command {
 			points[1] = new Waypoint(3.05, 3.35, Pathfinder.d2r(0));
 		}
 
+		Robot.DRIVE_TRAIN.resetEncoders();
 		pathfinderUtils = new PathfinderUtils(points, Robot.DRIVE_TRAIN.leftEncoder, Robot.DRIVE_TRAIN.rightEncoder);
 
 	}

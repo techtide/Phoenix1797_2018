@@ -36,17 +36,22 @@ public class Drivetrain extends Subsystem {
 	public Drivetrain() {
 		leftEncoder.setMaxPeriod(.1);
 		leftEncoder.setMinRate(10);
-		leftEncoder.setDistancePerPulse(5);
+		leftEncoder.setDistancePerPulse(RobotMap.ROBOT_ENCODER_DPP);
 		leftEncoder.setReverseDirection(false);
 		leftEncoder.setSamplesToAverage(7);
 		leftEncoder.reset();
 		
 		rightEncoder.setMaxPeriod(.1);
 		rightEncoder.setMinRate(10);
-		rightEncoder.setDistancePerPulse(5);
+		rightEncoder.setDistancePerPulse(RobotMap.ROBOT_ENCODER_DPP);
 		rightEncoder.setReverseDirection(true);
 		rightEncoder.setSamplesToAverage(7);
 		leftEncoder.reset();
+	}
+	
+	public void resetEncoders() {
+		leftEncoder.reset();
+		rightEncoder.reset();
 	}
 	
 	public void arcadeDrive(double x, double z){
@@ -59,6 +64,10 @@ public class Drivetrain extends Subsystem {
 	
 	public void stopDrive() {
 		DifferentialDrive.stopMotor();
+	}
+	
+	public double getAverageEncoderDistance() {
+		return (leftEncoder.getDistance() + rightEncoder.getDistance()) / 2;
 	}
 	
     public void initDefaultCommand() {
