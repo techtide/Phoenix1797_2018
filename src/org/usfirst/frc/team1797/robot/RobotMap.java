@@ -3,6 +3,7 @@ package org.usfirst.frc.team1797.robot;
 import java.util.HashMap;
 
 import edu.wpi.first.wpilibj.ADXRS450_Gyro;
+import edu.wpi.first.wpilibj.SPI;
 import edu.wpi.first.wpilibj.interfaces.Gyro;
 
 /**
@@ -23,13 +24,13 @@ public class RobotMap {
 
 	// Robot controls
 	public static final int DRIVER_FORWARD_AXIS = 1;
-	public static final int DRIVER_HORIZONTAL_AXIS = 3;
+	public static final int DRIVER_HORIZONTAL_AXIS = 4;
 
 	public static final int DRIVER_CONTROLLER_PORT = 0;
 	public static final int OPERATOR_CONTROLLER_PORT = 1;
 
 	// Physical multiplier of motors
-	public static final double DRIVETRAIN_SENSITIVITY = 0.25;
+	public static final double DRIVETRAIN_SENSITIVITY = 1;
 
 	// Time before pistons stop extending/retracting
 	public static final double FLIPPER_PISTON_TIME = 1000; // in milliseconds
@@ -45,18 +46,18 @@ public class RobotMap {
 	public static final double ROBOT_ENCODER_DPP = ROBOT_WHEEL_CIRCUMFERENCE / ROBOT_ENCODER_PULSES;
 
 	// Gyro
-	public static final Gyro gyro = new ADXRS450_Gyro();
+	 public static final Gyro gyro = new ADXRS450_Gyro(SPI.Port.kOnboardCS0);
 
 	// Add hardware ports here with an id and port number.
 	// Ex. ROBOT_HARDWARE_PORTS.put(<port id>, port number);
 	private static HashMap<String, Integer> ROBOT_HARDWARE_PORTS = new HashMap<>();
 	static {
 		// Drivetrain Subsystem
-		ROBOT_HARDWARE_PORTS = new HashMap<String, Integer>();
+		// ROBOT_HARDWARE_PORTS = new HashMap<String, Integer>();
 		ROBOT_HARDWARE_PORTS.put("left_motor_1", 0);
 		ROBOT_HARDWARE_PORTS.put("left_motor_2", 1);
-		ROBOT_HARDWARE_PORTS.put("right_motor_1", 2);
-		ROBOT_HARDWARE_PORTS.put("right_motor_2", 3);
+		ROBOT_HARDWARE_PORTS.put("right_motor_1", 3);
+		ROBOT_HARDWARE_PORTS.put("right_motor_2", 5);
 
 		// Flipper Subsystem
 		ROBOT_HARDWARE_PORTS.put("f_left_piston_1", 0);
@@ -73,10 +74,8 @@ public class RobotMap {
 		ROBOT_HARDWARE_PORTS.put("right_encoder_2", 3);
 
 		// Ramp Subsystem
-		ROBOT_HARDWARE_PORTS = new HashMap<String, Integer>();
+		// ROBOT_HARDWARE_PORTS = new HashMap<String, Integer>();
 		ROBOT_HARDWARE_PORTS.put("ramp_piston_1", 0);
-		ROBOT_HARDWARE_PORTS.put("ramp_piston_2", 1);
-		ROBOT_HARDWARE_PORTS.put("ramp_pison_3", 2);
 	}
 
 	public static int getPort(String id) {

@@ -3,10 +3,12 @@
 package org.usfirst.frc.team1797.robot;
 
 
+import org.usfirst.frc.team1797.robot.commands.auto.AutoCrossBaseline13;
 import org.usfirst.frc.team1797.robot.commands.auto.AutoCrossBaseline2Curved;
+// import org.usfirst.frc.team1797.robot.commands.auto.AutoCrossBaseline2Curved;
 import org.usfirst.frc.team1797.robot.subsystems.Drivetrain;
-import org.usfirst.frc.team1797.robot.subsystems.Flipper;
-import org.usfirst.frc.team1797.robot.subsystems.Ramp;
+// import org.usfirst.frc.team1797.robot.subsystems.Flipper;
+// import org.usfirst.frc.team1797.robot.subsystems.Ramp;
 
 import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.command.Command;
@@ -26,13 +28,15 @@ public class Robot extends IterativeRobot {
 
 	//public static final DriveTrain DRIVE_TRAIN = new DriveTrain();
 	public static final Drivetrain DRIVE_TRAIN = new Drivetrain();
-	public static final Flipper FLIPPER = new Flipper();
-	public static final Ramp RAMP = new Ramp();
+	// public static final Flipper FLIPPER = new Flipper();
+	// public static final Ramp RAMP = new Ramp();
 	public static OI oi;
 
 	Command autonomousCommand;
 	SendableChooser<Command> chooser = new SendableChooser<>();
-
+	
+	SendableChooser autonomousChooser;
+	
 	/**
 	 * This function is run when the robot is first started up and should be
 	 * used for any initialization code.
@@ -40,9 +44,12 @@ public class Robot extends IterativeRobot {
 	@Override
 	public void robotInit() {
 		oi = new OI();
-		// chooser.addObject("My Auto", new MyAutoCommand());
-		chooser.addObject("Auto 2 Curved", new AutoCrossBaseline2Curved());
-		SmartDashboard.putData("Auto mode", chooser);
+//		Just for one auto command.
+//		autonomousCommand = new AutoCrossBaseline13();
+		autonomousChooser = new SendableChooser();
+		autonomousChooser.addDefault("Routine A (Default)", new AutoCrossBaseline13());
+		autonomousChooser.addDefault("Routine B", new AutoCrossBaseline2Curved());
+		SmartDashboard.putData("Autonomous Routine Selector", autonomousChooser);
 	}
 
 	/**
@@ -73,18 +80,10 @@ public class Robot extends IterativeRobot {
 	 */
 	@Override
 	public void autonomousInit() {
-		autonomousCommand = chooser.getSelected();
-
-		/*
-		 * String autoSelected = SmartDashboard.getString("Auto Selector",
-		 * "Default"); switch(autoSelected) { case "My Auto": autonomousCommand
-		 * = new MyAutoCommand(); break; case "Default Auto": default:
-		 * autonomousCommand = new ExampleCommand(); break; }
-		 */
-
-		// schedule the autonomous command (example)
 		if (autonomousCommand != null)
 			autonomousCommand.start();
+		autonomousCommand = (Command) autonomousChooser.getSelected();
+		autonomousCommand.start();
 	}
 
 	/**

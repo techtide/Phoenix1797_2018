@@ -12,7 +12,7 @@ public class AutoCrossBaseline13 extends Command {
 
 	// These variables will stay here because they just regard this stuff
 	private static final double DRIVE_DISTANCE = 24; // the distance for the command to run for (in inches)
-	private static final double DRIVE_SPEED = 0.3; // Speed for motors to run at while executing
+	private static final double DRIVE_SPEED = 0.85; // Speed for motors to run at while executing
 
 	public AutoCrossBaseline13() {
 		// Use requires() here to declare subsystem dependencies
@@ -22,13 +22,12 @@ public class AutoCrossBaseline13 extends Command {
 	// Called just before this Command runs the first time
 	protected void initialize() {
 		RobotMap.delay();
-		Robot.DRIVE_TRAIN.arcadeDrive(DRIVE_SPEED, 0);
-		
 		Robot.DRIVE_TRAIN.resetEncoders();
 	}
 
 	// Called repeatedly when this Command is scheduled to run
 	protected void execute() {
+		Robot.DRIVE_TRAIN.arcadeDrive(DRIVE_SPEED, 0);
 	}
 
 	// Make this return true when this Command no longer needs to run execute()

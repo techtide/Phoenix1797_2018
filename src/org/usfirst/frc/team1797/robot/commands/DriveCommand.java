@@ -35,6 +35,7 @@ public class DriveCommand extends Command {
     		z *= Math.abs(z);
     		
     		//Input to drive
+    		System.out.println(Robot.oi.driverInput.getRawAxis(RobotMap.DRIVER_FORWARD_AXIS));
     		Robot.DRIVE_TRAIN.arcadeDrive(x * RobotMap.DRIVETRAIN_SENSITIVITY, z * RobotMap.DRIVETRAIN_SENSITIVITY);
     }
 
