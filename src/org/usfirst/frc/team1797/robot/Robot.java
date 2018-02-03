@@ -9,6 +9,7 @@ import org.usfirst.frc.team1797.robot.commands.auto.AutoCrossBaseline2Curved;
 import org.usfirst.frc.team1797.robot.subsystems.Drivetrain;
 // import org.usfirst.frc.team1797.robot.subsystems.Flipper;
 // import org.usfirst.frc.team1797.robot.subsystems.Ramp;
+import org.usfirst.frc.team1797.robot.subsystems.Roller;
 
 import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.command.Command;
@@ -28,6 +29,7 @@ public class Robot extends IterativeRobot {
 
 	//public static final DriveTrain DRIVE_TRAIN = new DriveTrain();
 	public static final Drivetrain DRIVE_TRAIN = new Drivetrain();
+	public static final Roller ROLLER = new Roller();
 	// public static final Flipper FLIPPER = new Flipper();
 	// public static final Ramp RAMP = new Ramp();
 	public static OI oi;
