@@ -1,5 +1,7 @@
 package org.usfirst.frc.team1797.robot.subsystems;
 
+import org.usfirst.frc.team1797.robot.RobotMap;
+
 import edu.wpi.first.wpilibj.VictorSP;
 import edu.wpi.first.wpilibj.command.Subsystem;
 
@@ -16,7 +18,7 @@ public class Roller extends Subsystem {
 	private VictorSP motor1;
 	
 	public Roller() {
-		motor1 = new VictorSP(0);
+		motor1 = new VictorSP(RobotMap.getPort("roller_motor"));
 	}
 	
 	public void intake() {
