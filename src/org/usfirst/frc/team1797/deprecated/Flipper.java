@@ -1,3 +1,4 @@
+package org.usfirst.frc.team1797.deprecated;
 //package org.usfirst.frc.team1797.robot.subsystems;
 //
 //import org.usfirst.frc.team1797.robot.RobotMap;
