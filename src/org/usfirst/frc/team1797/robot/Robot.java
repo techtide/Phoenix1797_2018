@@ -5,6 +5,7 @@ package org.usfirst.frc.team1797.robot;
 
 import org.usfirst.frc.team1797.robot.commands.auto.AutoCrossBaseline13;
 import org.usfirst.frc.team1797.robot.commands.auto.AutoCrossBaseline2Curved;
+import org.usfirst.frc.team1797.robot.commands.auto.AutoDoNothing;
 // import org.usfirst.frc.team1797.robot.commands.auto.AutoCrossBaseline2Curved;
 import org.usfirst.frc.team1797.robot.subsystems.Drivetrain;
 // import org.usfirst.frc.team1797.robot.subsystems.Flipper;
@@ -51,8 +52,9 @@ public class Robot extends IterativeRobot {
 //		Just for one auto command.
 //		autonomousCommand = new AutoCrossBaseline13();
 		autonomousChooser = new SendableChooser();
-		autonomousChooser.addDefault("Routine A (Default)", new AutoCrossBaseline13());
-		autonomousChooser.addDefault("Routine B", new AutoCrossBaseline2Curved());
+		autonomousChooser.addDefault("Do Nothing (Default)", new AutoDoNothing());
+		autonomousChooser.addObject("Cross Baseline 1 or 3", new AutoCrossBaseline13());
+		autonomousChooser.addObject("Cross Baseline 2 Curved", new AutoCrossBaseline2Curved());
 		SmartDashboard.putData("Autonomous Routine Selector", autonomousChooser);
 	}
 

@@ -61,7 +61,6 @@ public class RobotMap {
 		ROBOT_HARDWARE_PORTS.put("intake_motor_1", 6);
 		ROBOT_HARDWARE_PORTS.put("intake_motor_2", 7);
 
-<<<<<<< HEAD
 		// Pistons
 //		ROBOT_HARDWARE_PORTS.put("f_left_piston_1", 0);
 //		ROBOT_HARDWARE_PORTS.put("f_left_piston_2", 1);
@@ -71,7 +70,7 @@ public class RobotMap {
 //		ROBOT_HARDWARE_PORTS.put("f_main_piston_2", 5);
 		ROBOT_HARDWARE_PORTS.put("intake_piston_1", 0);
 		ROBOT_HARDWARE_PORTS.put("intake_piston_2", 1);
-=======
+
 		/* Flipper Subsystem
 		ROBOT_HARDWARE_PORTS.put("f_left_piston_1", 0);
 		ROBOT_HARDWARE_PORTS.put("f_left_piston_2", 1);
@@ -86,7 +85,6 @@ public class RobotMap {
 		// Roller Piston/Raise Subsystem
 		ROBOT_HARDWARE_PORTS.put("rp_forward", 7);
 		ROBOT_HARDWARE_PORTS.put("rp_reverse", 8);
->>>>>>> branch 'master' of https://github.com/SarahCovey/Phoenix1797_2018.git
 
 		// Encoders
 		ROBOT_HARDWARE_PORTS.put("left_encoder_1", 0);
