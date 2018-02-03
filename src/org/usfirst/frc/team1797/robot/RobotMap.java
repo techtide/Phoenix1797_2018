@@ -31,6 +31,7 @@ public class RobotMap {
 
 	// Physical multiplier of motors
 	public static final double DRIVETRAIN_SENSITIVITY = 1;
+	public static final double INTAKE_MOTOR_SPEED = 1;
 
 	// Time before pistons stop extending/retracting
 	public static final double FLIPPER_PISTON_TIME = 1000; // in milliseconds
@@ -52,20 +53,23 @@ public class RobotMap {
 	// Ex. ROBOT_HARDWARE_PORTS.put(<port id>, port number);
 	private static HashMap<String, Integer> ROBOT_HARDWARE_PORTS = new HashMap<>();
 	static {
-		// Drivetrain Subsystem
-		// ROBOT_HARDWARE_PORTS = new HashMap<String, Integer>();
+		// Motors
 		ROBOT_HARDWARE_PORTS.put("left_motor_1", 0);
 		ROBOT_HARDWARE_PORTS.put("left_motor_2", 1);
 		ROBOT_HARDWARE_PORTS.put("right_motor_1", 3);
 		ROBOT_HARDWARE_PORTS.put("right_motor_2", 5);
+		ROBOT_HARDWARE_PORTS.put("intake_motor_1", 6);
+		ROBOT_HARDWARE_PORTS.put("intake_motor_2", 7);
 
-		// Flipper Subsystem
-		ROBOT_HARDWARE_PORTS.put("f_left_piston_1", 0);
-		ROBOT_HARDWARE_PORTS.put("f_left_piston_2", 1);
-		ROBOT_HARDWARE_PORTS.put("f_right_piston_1", 2);
-		ROBOT_HARDWARE_PORTS.put("f_right_piston_2", 3);
-		ROBOT_HARDWARE_PORTS.put("f_main_piston_1", 4);
-		ROBOT_HARDWARE_PORTS.put("f_main_piston_2", 5);
+		// Pistons
+//		ROBOT_HARDWARE_PORTS.put("f_left_piston_1", 0);
+//		ROBOT_HARDWARE_PORTS.put("f_left_piston_2", 1);
+//		ROBOT_HARDWARE_PORTS.put("f_right_piston_1", 2);
+//		ROBOT_HARDWARE_PORTS.put("f_right_piston_2", 3);
+//		ROBOT_HARDWARE_PORTS.put("f_main_piston_1", 4);
+//		ROBOT_HARDWARE_PORTS.put("f_main_piston_2", 5);
+		ROBOT_HARDWARE_PORTS.put("intake_piston_1", 0);
+		ROBOT_HARDWARE_PORTS.put("intake_piston_2", 1);
 
 		// Encoders
 		ROBOT_HARDWARE_PORTS.put("left_encoder_1", 0);
@@ -73,9 +77,9 @@ public class RobotMap {
 		ROBOT_HARDWARE_PORTS.put("right_encoder_1", 2);
 		ROBOT_HARDWARE_PORTS.put("right_encoder_2", 3);
 
-		// Ramp Subsystem
-		// ROBOT_HARDWARE_PORTS = new HashMap<String, Integer>();
-		ROBOT_HARDWARE_PORTS.put("ramp_piston_1", 0);
+//		// Ramp Subsystem
+//		// ROBOT_HARDWARE_PORTS = new HashMap<String, Integer>();
+//		ROBOT_HARDWARE_PORTS.put("ramp_piston_1", 0);
 	}
 
 	public static int getPort(String id) {
