@@ -2,8 +2,10 @@ package org.usfirst.frc.team1797.robot;
 
 import java.util.HashMap;
 
-import edu.wpi.first.wpilibj.ADXRS450_Gyro;
-import edu.wpi.first.wpilibj.SPI;
+import com.kauailabs.navx.frc.AHRS;
+
+import edu.wpi.first.wpilibj.I2C;
+import edu.wpi.first.wpilibj.SerialPort;
 import edu.wpi.first.wpilibj.interfaces.Gyro;
 
 /**
@@ -45,10 +47,13 @@ public class RobotMap {
 	private static final double ROBOT_WHEEL_CIRCUMFERENCE = 37.699;
 	private static final int ROBOT_ENCODER_PULSES = 256;
 	public static final double ROBOT_ENCODER_DPP = ROBOT_WHEEL_CIRCUMFERENCE / ROBOT_ENCODER_PULSES;
-
+	
 	// Gyro
-	 public static final Gyro gyro = new ADXRS450_Gyro(SPI.Port.kOnboardCS0);
-
+	// Test aonboard, all the different ports
+	// I need to switch this to I2C. This was hell to figure out so contact Arman if u want to change this.
+	// AHRS docs on kuwawi labs site or something
+	 public static final AHRS gyro = new AHRS(I2C.Port.kMXP); 
+	 
 	// Add hardware ports here with an id and port number.
 	// Ex. ROBOT_HARDWARE_PORTS.put(<port id>, port number);
 	private static HashMap<String, Integer> ROBOT_HARDWARE_PORTS = new HashMap<>();
@@ -62,22 +67,24 @@ public class RobotMap {
 		ROBOT_HARDWARE_PORTS.put("intake_motor_2", 7);
 
 		// Pistons
-//		ROBOT_HARDWARE_PORTS.put("f_left_piston_1", 0);
-//		ROBOT_HARDWARE_PORTS.put("f_left_piston_2", 1);
-//		ROBOT_HARDWARE_PORTS.put("f_right_piston_1", 2);
-//		ROBOT_HARDWARE_PORTS.put("f_right_piston_2", 3);
-//		ROBOT_HARDWARE_PORTS.put("f_main_piston_1", 4);
-//		ROBOT_HARDWARE_PORTS.put("f_main_piston_2", 5);
-		ROBOT_HARDWARE_PORTS.put("intake_piston_1", 0);
-		ROBOT_HARDWARE_PORTS.put("intake_piston_2", 1);
-
-		/* Flipper Subsystem
 		ROBOT_HARDWARE_PORTS.put("f_left_piston_1", 0);
 		ROBOT_HARDWARE_PORTS.put("f_left_piston_2", 1);
 		ROBOT_HARDWARE_PORTS.put("f_right_piston_1", 2);
 		ROBOT_HARDWARE_PORTS.put("f_right_piston_2", 3);
 		ROBOT_HARDWARE_PORTS.put("f_main_piston_1", 4);
-		ROBOT_HARDWARE_PORTS.put("f_main_piston_2", 5); */
+		ROBOT_HARDWARE_PORTS.put("f_main_piston_2", 5);
+		
+		// Intake Pistons
+		ROBOT_HARDWARE_PORTS.put("intake_piston_1", 0);
+		ROBOT_HARDWARE_PORTS.put("intake_piston_2", 1);
+
+		// Flipper Subsystem
+		ROBOT_HARDWARE_PORTS.put("f_left_piston_1", 0);
+		ROBOT_HARDWARE_PORTS.put("f_left_piston_2", 1);
+		ROBOT_HARDWARE_PORTS.put("f_right_piston_1", 2);
+		ROBOT_HARDWARE_PORTS.put("f_right_piston_2", 3);
+		ROBOT_HARDWARE_PORTS.put("f_main_piston_1", 4);
+		ROBOT_HARDWARE_PORTS.put("f_main_piston_2", 5); 
 		
 		// Roller Subsystem
 		ROBOT_HARDWARE_PORTS.put("roller_motor", 6);
@@ -92,9 +99,8 @@ public class RobotMap {
 		ROBOT_HARDWARE_PORTS.put("right_encoder_1", 2);
 		ROBOT_HARDWARE_PORTS.put("right_encoder_2", 3);
 
-//		// Ramp Subsystem
-//		// ROBOT_HARDWARE_PORTS = new HashMap<String, Integer>();
-//		ROBOT_HARDWARE_PORTS.put("ramp_piston_1", 0);
+		// Ramp Subsystem
+		ROBOT_HARDWARE_PORTS.put("ramp_piston_1", 0);
 	}
 
 	public static int getPort(String id) {
