@@ -2,13 +2,16 @@ package org.usfirst.frc.team1797.robot.utils;
 
 import org.usfirst.frc.team1797.robot.RobotMap;
 
+import com.kauailabs.navx.frc.AHRS;
+
 import edu.wpi.first.wpilibj.Encoder;
-import edu.wpi.first.wpilibj.interfaces.Gyro;
 import jaci.pathfinder.Pathfinder;
 import jaci.pathfinder.Trajectory;
 import jaci.pathfinder.Waypoint;
 import jaci.pathfinder.followers.EncoderFollower;
 import jaci.pathfinder.modifiers.TankModifier;
+
+// @version 2
 
 public class PathfinderUtils {
 	
@@ -42,10 +45,11 @@ public class PathfinderUtils {
 		right.configurePIDVA(1, 0, 0, 1 / MAX_VELOCITY, 0);
 	}
 	
-	public double[] update(Encoder leftEncoder, Encoder rightEncoder, Gyro gyro) {
+	public double[] update(Encoder leftEncoder, Encoder rightEncoder, AHRS gyro) {
 		double l = left.calculate(leftEncoder.get());
 		double r = right.calculate(rightEncoder.get());
-
+		
+		// Z in a quaternion is equivalent to the angles rotation about the origin horizontally. questions: ab
 		double gyroHeading = gyro.getAngle();
 		double desiredHeading = Pathfinder.r2d(left.getHeading());
 		double angleDifference = Pathfinder.boundHalfDegrees(desiredHeading - gyroHeading);

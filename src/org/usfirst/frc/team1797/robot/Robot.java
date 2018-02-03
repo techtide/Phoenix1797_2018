@@ -56,6 +56,7 @@ public class Robot extends IterativeRobot {
 		autonomousChooser.addObject("Cross Baseline 1 or 3", new AutoCrossBaseline13());
 		autonomousChooser.addObject("Cross Baseline 2 Curved", new AutoCrossBaseline2Curved());
 		SmartDashboard.putData("Autonomous Routine Selector", autonomousChooser);
+		SmartDashboard.putBoolean( "IMU_Connected", RobotMap.gyro.isConnected());
 	}
 
 	/**
