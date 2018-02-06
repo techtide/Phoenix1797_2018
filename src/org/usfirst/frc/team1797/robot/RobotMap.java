@@ -21,7 +21,7 @@ public class RobotMap {
 
 	public static void delay() {
 		long startTime = System.currentTimeMillis();
-		while (DELAY_SECONDS * 1000 + startTime > System.currentTimeMillis()) {}
+		while (DELAY_SECONDS * 1000 + startTime >= System.currentTimeMillis()) {}
 	}
 
 	// Robot controls
@@ -62,9 +62,9 @@ public class RobotMap {
 		ROBOT_HARDWARE_PORTS.put("left_motor_1", 0);
 		ROBOT_HARDWARE_PORTS.put("left_motor_2", 1);
 		ROBOT_HARDWARE_PORTS.put("right_motor_1", 3);
-		ROBOT_HARDWARE_PORTS.put("right_motor_2", 5);
-		ROBOT_HARDWARE_PORTS.put("intake_motor_1", 6);
-		ROBOT_HARDWARE_PORTS.put("intake_motor_2", 7);
+		ROBOT_HARDWARE_PORTS.put("right_motor_2", 6);
+		//ROBOT_HARDWARE_PORTS.put("intake_motor_1", 6);
+		//ROBOT_HARDWARE_PORTS.put("intake_motor_2", 7);
 
 		// Pistons
 		ROBOT_HARDWARE_PORTS.put("f_left_piston_1", 0);
@@ -100,7 +100,7 @@ public class RobotMap {
 		ROBOT_HARDWARE_PORTS.put("right_encoder_2", 3);
 
 		// Ramp Subsystem
-		ROBOT_HARDWARE_PORTS.put("ramp_piston_1", 0);
+		ROBOT_HARDWARE_PORTS.put("ramp_piston_1", 0); 
 	}
 
 	public static int getPort(String id) {

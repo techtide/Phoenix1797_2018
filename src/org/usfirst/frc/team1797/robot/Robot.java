@@ -10,8 +10,8 @@ import org.usfirst.frc.team1797.robot.commands.auto.AutoDoNothing;
 import org.usfirst.frc.team1797.robot.subsystems.Drivetrain;
 // import org.usfirst.frc.team1797.robot.subsystems.Flipper;
 // import org.usfirst.frc.team1797.robot.subsystems.Ramp;
-import org.usfirst.frc.team1797.robot.subsystems.Roller;
-import org.usfirst.frc.team1797.robot.subsystems.RollerPiston;
+//import org.usfirst.frc.team1797.robot.subsystems.Roller;
+// import org.usfirst.frc.team1797.robot.subsystems.RollerPiston;
 
 import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.command.Command;
@@ -31,8 +31,8 @@ public class Robot extends IterativeRobot {
 
 	//public static final DriveTrain DRIVE_TRAIN = new DriveTrain();
 	public static final Drivetrain DRIVE_TRAIN = new Drivetrain();
-	public static final Roller ROLLER = new Roller();
-	public static final RollerPiston ROLLER_PISTON = new RollerPiston();
+	// public static final Roller ROLLER = new Roller();
+	// public static final RollerPiston ROLLER_PISTON = new RollerPiston();
 	// public static final Flipper FLIPPER = new Flipper();
 	// public static final Ramp RAMP = new Ramp();
 	public static OI oi;
@@ -52,11 +52,13 @@ public class Robot extends IterativeRobot {
 //		Just for one auto command.
 //		autonomousCommand = new AutoCrossBaseline13();
 		autonomousChooser = new SendableChooser();
-		autonomousChooser.addDefault("Do Nothing (Default)", new AutoDoNothing());
-		autonomousChooser.addObject("Cross Baseline 1 or 3", new AutoCrossBaseline13());
-		autonomousChooser.addObject("Cross Baseline 2 Curved", new AutoCrossBaseline2Curved());
+		//autonomousChooser.addDefault("Do Nothing (Default)", new AutoDoNothing());
+		//autonomousChooser.addDefault("Cross Baseline 1 or 3", new AutoCrossBaseline13());
+		autonomousChooser.addDefault("Across Baseline 2 Curved", new AutoCrossBaseline2Curved());
 		SmartDashboard.putData("Autonomous Routine Selector", autonomousChooser);
 		SmartDashboard.putBoolean( "IMU_Connected", RobotMap.gyro.isConnected());
+		System.out.println("Connection status: " + RobotMap.gyro.isConnected());
+		System.out.println("Initial Angle: " + RobotMap.gyro.getAngle());
 	}
 
 	/**

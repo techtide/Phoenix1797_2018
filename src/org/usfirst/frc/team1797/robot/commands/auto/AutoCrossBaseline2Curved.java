@@ -24,28 +24,31 @@ public class AutoCrossBaseline2Curved extends Command {
 
 	// Called just before this Command runs the first time
 	protected void initialize() {
-		RobotMap.delay();
+		// RobotMap.delay();
 		
 		String gameData = DriverStation.getInstance().getGameSpecificMessage();
-		Waypoint[] points = new Waypoint[2];
+		Waypoint[] points = new Waypoint[3];
 		points[0] = new Waypoint(0, 0, Pathfinder.d2r(0));
 		
+		//points[1] = new Waypoint(gameData.charAt(0) == 'L' ? -1.525 : 1.525, 1.675, 0);
+		points[1] = new Waypoint(-1.525, 1.675, 0);
+		
 		if (gameData.charAt(0) == 'L') {
-			points[1] = new Waypoint(-3.05, 3.35, Pathfinder.d2r(0));
+			points[2] = new Waypoint(-3.05, 3.35, Pathfinder.d2r(0));
 		} else {
-			points[1] = new Waypoint(3.05, 3.35, Pathfinder.d2r(0));
+			points[2] = new Waypoint(3.05, 3.35, Pathfinder.d2r(0));
 		}
 
 		Robot.DRIVE_TRAIN.resetEncoders();
 		pathfinderUtils = new PathfinderUtils(points, Robot.DRIVE_TRAIN.leftEncoder, Robot.DRIVE_TRAIN.rightEncoder);
-
+		
 	}
 
 	// Called repeatedly when this Command is scheduled to run
 	protected void execute() {
 		double[] speeds = pathfinderUtils.update(Robot.DRIVE_TRAIN.leftEncoder, Robot.DRIVE_TRAIN.rightEncoder, RobotMap.gyro);
-
-		Robot.DRIVE_TRAIN.tankDrive(speeds[0], speeds[1]);
+		
+		Robot.DRIVE_TRAIN.tankDrive(-(speeds[0]), -(speeds[1]));
 	}
 
 	// Make this return true when this Command no longer needs to run execute()

@@ -15,9 +15,9 @@ import jaci.pathfinder.modifiers.TankModifier;
 
 public class PathfinderUtils {
 	
-	private static final double TIME_STEP = 0.02;
+	private static final double TIME_STEP = 2.0;
 	private static final double MAX_VELOCITY = 2.0;
-	private static final double MAX_ACCELERATION = 2.0;
+	private static final double MAX_ACCELERATION = 1.0;
 	private static final double MAX_JERK = 60;
 	
 	private static final int TPR = 1000;
@@ -49,13 +49,12 @@ public class PathfinderUtils {
 		double l = left.calculate(leftEncoder.get());
 		double r = right.calculate(rightEncoder.get());
 		
-		// Z in a quaternion is equivalent to the angles rotation about the origin horizontally. questions: ab
 		double gyroHeading = gyro.getAngle();
 		double desiredHeading = Pathfinder.r2d(left.getHeading());
 		double angleDifference = Pathfinder.boundHalfDegrees(desiredHeading - gyroHeading);
 		double turn = 0.8 * (-1 / 80.0) * angleDifference;
 		
-		double[] values = {l + turn, r - turn};
+		double[] values = {(l + turn), (r - turn)};
 		return values;
 	}
 	
