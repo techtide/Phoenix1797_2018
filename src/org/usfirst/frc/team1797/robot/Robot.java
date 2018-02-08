@@ -10,7 +10,9 @@ import org.usfirst.frc.team1797.robot.subsystems.Drivetrain;
 // import org.usfirst.frc.team1797.robot.subsystems.Flipper;
 // import org.usfirst.frc.team1797.robot.subsystems.Ramp;
 //import org.usfirst.frc.team1797.robot.subsystems.Roller;
-// import org.usfirst.frc.team1797.robot.subsystems.RollerPiston;
+import org.usfirst.frc.team1797.robot.subsystems.RollerPiston;
+import org.usfirst.frc.team1797.robot.subsystems.IntakeMotors;
+import org.usfirst.frc.team1797.robot.subsystems.IntakePistons;
 
 import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.command.Command;
@@ -30,8 +32,10 @@ public class Robot extends IterativeRobot {
 
 	//public static final DriveTrain DRIVE_TRAIN = new DriveTrain();
 	public static final Drivetrain DRIVE_TRAIN = new Drivetrain();
+	public static final IntakeMotors intakeMotors = new IntakeMotors();
+	public static final IntakePistons intakePistons = new IntakePistons();
 	// public static final Roller ROLLER = new Roller();
-	// public static final RollerPiston ROLLER_PISTON = new RollerPiston();
+	public static final RollerPiston ROLLER_PISTON = new RollerPiston();
 	// public static final Flipper FLIPPER = new Flipper();
 	// public static final Ramp RAMP = new Ramp();
 	public static OI oi;
@@ -56,8 +60,8 @@ public class Robot extends IterativeRobot {
 		autonomousChooser.addObject("Across Baseline 2 Curved [Right]", new AutoRunner(AutoRunner.Routines.BASELINE2CURVEDR));
 		autonomousChooser.addObject("Deposit Single Box 2 [Left]", new AutoRunner(AutoRunner.Routines.DEPOSITSINGLEBOX2L));
 		autonomousChooser.addObject("Deposit Single Box 2 [Right]", new AutoRunner(AutoRunner.Routines.DEPOSITSINGLEBOX2R));
-		autonomousChooser.addObject("Deposit Single Box 13 [Left]", new AutoRunner(AutoRunner.Routines.DEPOSITSINGLEBOX13L));
-		autonomousChooser.addObject("Deposit Single Box 13 [Right]", new AutoRunner(AutoRunner.Routines.DEPOSITSINGLEBOX13L));
+		// autonomousChooser.addObject("Deposit Single Box 13 [Left]", new AutoRunner(AutoRunner.Routines.DEPOSITSINGLEBOX13L));
+		// autonomousChooser.addObject("Deposit Single Box 13 [Right]", new AutoRunner(AutoRunner.Routines.DEPOSITSINGLEBOX13L));
 		SmartDashboard.putData("Autonomous Routine Selector", autonomousChooser);
 		SmartDashboard.putBoolean("Gyro Status", RobotMap.gyro.isConnected());
 		SmartDashboard.putNumber("Gyro Angle (deg)", RobotMap.gyro.getAngle());
