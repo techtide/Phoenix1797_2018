@@ -19,8 +19,8 @@ public class AutoRunner extends Command {
 	private LocalTrajectoryManager localTrajectoryManager;
 	
 	public enum Routines {
-		BASELINE2CURVEDL, BASELINE13L, DEPOSITSINGLEBOX2L, DEPOSITSINGLEBOX13L, DONOTHING,
-		BASELINE2CURVEDR, BASELINE13R, DEPOSITSINGLEBOX2R, DEPOSITSINGLEBOX13R, 
+		BASELINE2CURVEDL, DEPOSITSINGLEBOX1L, DEPOSITSINGLEBOX2L, DONOTHING,
+		BASELINE2CURVEDR, DEPOSITSINGLEBOX2R, DEPOSITSINGLEBOX3R, 
 	}
 
 	public AutoRunner(Routines routine) {
@@ -40,7 +40,6 @@ public class AutoRunner extends Command {
 
 	protected Trajectory getTrajectory() {
 		return localTrajectoryManager.readPointsData(currentAutoRoutine);
-		
 	}
 
 	// Called repeatedly when this Command is scheduled to run

@@ -3,6 +3,7 @@
 package org.usfirst.frc.team1797.robot;
 
 
+import org.usfirst.frc.team1797.robot.commands.auto.AutoDoNothing;
 import org.usfirst.frc.team1797.robot.commands.auto.AutoRunner;
 // import org.usfirst.frc.team1797.robot.commands.auto.AutoCrossBaseline2Curved;
 import org.usfirst.frc.team1797.robot.subsystems.Drivetrain;
@@ -47,18 +48,19 @@ public class Robot extends IterativeRobot {
 	@Override
 	public void robotInit() {
 		oi = new OI();
-//		Just for one auto command.
-//		autonomousCommand = new AutoCrossBaseline13();
 		autonomousChooser = new SendableChooser();
-		//autonomousChooser.addDefault("Do Nothing (Default)", new AutoDoNothing());
-		//autonomousChooser.addDefault("Cross Baseline 1 or 3", new AutoCrossBaseline13());
-		autonomousChooser.addDefault("Across Baseline 2 Curved", new AutoRunner(AutoRunner.Routines.BASELINE2CURVED));
+		// Please stay away from the architecture unless it does not work; only use Routine enums and not strings. Kthx. ~ab
+		autonomousChooser.addDefault("Autonomous Do Nothing", new AutoDoNothing());
+		autonomousChooser.addObject("Autonomous Cross Baseline 13", new AutoDoNothing());
+		autonomousChooser.addObject("Across Baseline 2 Curved [Left]", new AutoRunner(AutoRunner.Routines.BASELINE2CURVEDL));
+		autonomousChooser.addObject("Across Baseline 2 Curved [Right]", new AutoRunner(AutoRunner.Routines.BASELINE2CURVEDR));
+		autonomousChooser.addObject("Deposit Single Box 2 [Left]", new AutoRunner(AutoRunner.Routines.DEPOSITSINGLEBOX2L));
+		autonomousChooser.addObject("Deposit Single Box 2 [Right]", new AutoRunner(AutoRunner.Routines.DEPOSITSINGLEBOX2R));
+		autonomousChooser.addObject("Deposit Single Box 13 [Left]", new AutoRunner(AutoRunner.Routines.DEPOSITSINGLEBOX13L));
+		autonomousChooser.addObject("Deposit Single Box 13 [Right]", new AutoRunner(AutoRunner.Routines.DEPOSITSINGLEBOX13L));
 		SmartDashboard.putData("Autonomous Routine Selector", autonomousChooser);
-		SmartDashboard.putBoolean( "IMU_Connected", RobotMap.gyro.isConnected());
-		//System.out.println("Connection status: " + RobotMap.gyro.isConnected());
-		//System.out.println("Initial Angle: " + RobotMap.gyro.getAngle());
-		
-		// robot runs at 50 hz - change in time always = 0.02s 
+		SmartDashboard.putBoolean("Gyro Status", RobotMap.gyro.isConnected());
+		SmartDashboard.putNumber("Gyro Angle (deg)", RobotMap.gyro.getAngle());
 	}
 
 	/**
