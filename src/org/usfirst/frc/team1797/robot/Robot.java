@@ -3,9 +3,7 @@
 package org.usfirst.frc.team1797.robot;
 
 
-import org.usfirst.frc.team1797.robot.commands.auto.AutoCrossBaseline13;
-import org.usfirst.frc.team1797.robot.commands.auto.AutoCrossBaseline2Curved;
-import org.usfirst.frc.team1797.robot.commands.auto.AutoDoNothing;
+import org.usfirst.frc.team1797.robot.commands.auto.AutoRunner;
 // import org.usfirst.frc.team1797.robot.commands.auto.AutoCrossBaseline2Curved;
 import org.usfirst.frc.team1797.robot.subsystems.Drivetrain;
 // import org.usfirst.frc.team1797.robot.subsystems.Flipper;
@@ -54,11 +52,13 @@ public class Robot extends IterativeRobot {
 		autonomousChooser = new SendableChooser();
 		//autonomousChooser.addDefault("Do Nothing (Default)", new AutoDoNothing());
 		//autonomousChooser.addDefault("Cross Baseline 1 or 3", new AutoCrossBaseline13());
-		autonomousChooser.addDefault("Across Baseline 2 Curved", new AutoCrossBaseline2Curved());
+		autonomousChooser.addDefault("Across Baseline 2 Curved", new AutoRunner(AutoRunner.Routines.BASELINE2CURVED));
 		SmartDashboard.putData("Autonomous Routine Selector", autonomousChooser);
 		SmartDashboard.putBoolean( "IMU_Connected", RobotMap.gyro.isConnected());
-		System.out.println("Connection status: " + RobotMap.gyro.isConnected());
-		System.out.println("Initial Angle: " + RobotMap.gyro.getAngle());
+		//System.out.println("Connection status: " + RobotMap.gyro.isConnected());
+		//System.out.println("Initial Angle: " + RobotMap.gyro.getAngle());
+		
+		// robot runs at 50 hz - change in time always = 0.02s 
 	}
 
 	/**
