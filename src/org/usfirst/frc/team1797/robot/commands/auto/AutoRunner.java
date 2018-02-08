@@ -2,53 +2,52 @@ package org.usfirst.frc.team1797.robot.commands.auto;
 
 import org.usfirst.frc.team1797.robot.Robot;
 import org.usfirst.frc.team1797.robot.RobotMap;
+import org.usfirst.frc.team1797.robot.utils.LocalTrajectoryManager;
 import org.usfirst.frc.team1797.robot.utils.PathfinderUtils;
 
 import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.command.Command;
-import jaci.pathfinder.Pathfinder;
-import jaci.pathfinder.Waypoint;
+import jaci.pathfinder.Trajectory;
 
 /**
  *
  */
-public class AutoCrossBaseline2Curved extends Command {
+public class AutoRunner extends Command {
 
+	private Routines currentAutoRoutine;
 	private PathfinderUtils pathfinderUtils;
+	private LocalTrajectoryManager localTrajectoryManager;
 	
-	public AutoCrossBaseline2Curved() {
+	public enum Routines {
+		BASELINE2CURVEDL, BASELINE13L, DEPOSITSINGLEBOX2L, DEPOSITSINGLEBOX13L, DONOTHING,
+		BASELINE2CURVEDR, BASELINE13R, DEPOSITSINGLEBOX2R, DEPOSITSINGLEBOX13R, 
+	}
+
+	public AutoRunner(Routines routine) {
 		// Use requires() here to declare subsystem dependencies
 		// eg. requires(chassis);
-		requires(Robot.DRIVE_TRAIN);
+		this.currentAutoRoutine = routine;
 	}
 
 	// Called just before this Command runs the first time
 	protected void initialize() {
-		// RobotMap.delay();
-		
 		String gameData = DriverStation.getInstance().getGameSpecificMessage();
-		Waypoint[] points = new Waypoint[3];
-		points[0] = new Waypoint(0, 0, Pathfinder.d2r(0));
 		
-		//points[1] = new Waypoint(gameData.charAt(0) == 'L' ? -1.525 : 1.525, 1.675, 0);
-		points[1] = new Waypoint(-1.525, 1.675, 0);
 		
-		if (gameData.charAt(0) == 'L') {
-			points[2] = new Waypoint(-3.05, 3.35, Pathfinder.d2r(0));
-		} else {
-			points[2] = new Waypoint(3.05, 3.35, Pathfinder.d2r(0));
-		}
-
 		Robot.DRIVE_TRAIN.resetEncoders();
-		pathfinderUtils = new PathfinderUtils(points, Robot.DRIVE_TRAIN.leftEncoder, Robot.DRIVE_TRAIN.rightEncoder);
+		pathfinderUtils = new PathfinderUtils(getTrajectory(), Robot.DRIVE_TRAIN.leftEncoder, Robot.DRIVE_TRAIN.rightEncoder);
+	}
+
+	protected Trajectory getTrajectory() {
+		return localTrajectoryManager.readPointsData(currentAutoRoutine);
 		
 	}
 
 	// Called repeatedly when this Command is scheduled to run
 	protected void execute() {
-		double[] speeds = pathfinderUtils.update(Robot.DRIVE_TRAIN.leftEncoder, Robot.DRIVE_TRAIN.rightEncoder, RobotMap.gyro);
-		
-		Robot.DRIVE_TRAIN.tankDrive(-(speeds[0]), -(speeds[1]));
+		double[] speeds = pathfinderUtils.update(Robot.DRIVE_TRAIN.leftEncoder, Robot.DRIVE_TRAIN.rightEncoder,
+				RobotMap.gyro);
+		Robot.DRIVE_TRAIN.tankDrive(-speeds[0], -speeds[1]);
 	}
 
 	// Make this return true when this Command no longer needs to run execute()

@@ -35,15 +35,17 @@ public class DriveCommand extends Command {
     		z *= Math.abs(z);
     		
     		//Input to drive
-    		System.out.println(Robot.oi.driverInput.getRawAxis(RobotMap.DRIVER_FORWARD_AXIS));
+    		//System.out.println(Robot.oi.driverInput.getRawAxis(RobotMap.DRIVER_FORWARD_AXIS));
     		Robot.DRIVE_TRAIN.arcadeDrive(x * RobotMap.DRIVETRAIN_SENSITIVITY, z * RobotMap.DRIVETRAIN_SENSITIVITY);
+    		
+    		System.out.println((Robot.DRIVE_TRAIN.leftEncoder.getRate() + Robot.DRIVE_TRAIN.rightEncoder.getRate())/2);
     }
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
         return false;
     }
-
+    
     // Called once after isFinished returns true
     protected void end() {
     		Robot.DRIVE_TRAIN.stopDrive();
