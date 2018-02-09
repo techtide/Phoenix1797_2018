@@ -57,6 +57,7 @@ public class Robot extends IterativeRobot {
 	 */
 	@Override
 	public void robotInit() {
+		System.out.println("testing 2 see if code is working");
 		oi = new OI();
 		autonomousChooser = new SendableChooser();
 		

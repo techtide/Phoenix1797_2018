@@ -21,46 +21,37 @@ import jaci.pathfinder.Trajectory;
  */
 public class TrajectoryManager {
 	public File[] folder;
-	private HashMap<String, Trajectory> trajectories;
-	private Map<String, String> env;
+	private HashMap<String, File> trajectories;
+	
 	public TrajectoryManager() {
 		// TODO Auto-generated constructor stub
-		env = System.getenv();
-		System.out.println(env);
-
+		trajectories = new HashMap<>();
 		File x = new File("/home/lvuser/trajectories/");
 		
 		folder = x.listFiles();
-		
-		/* 
-		 * The CSV files need to be on the roboRIO, and need to include the alliance number and direction (at the end).
-		 * For instance, it could be "BASELINECURVED2L"; the title also needs to be in all capitals.
-		*/
-		
+//		
+//		/* 
+//		 * The CSV files need to be on the roboRIO, and need to include the alliance number and direction (at the end).
+//		 * For instance, it could be "BASELINECURVED2L"; the title also needs to be in all capitals.
+//		*/
+//		
 		for(File f : folder) {
-			trajectories.put(f.getName(), Pathfinder.readFromCSV(f));
+			trajectories.put(f.getName(), f);
 		}
+		System.out.println(trajectories);
 	}
 	
-	private Routines fileToRoutine(String name) {
-		return AutoRunner.Routines.valueOf(name);
+	public Trajectory getTrajectoryFromFile(String trajectoryName) {
+		return Pathfinder.readFromCSV(trajectories.get(trajectoryName));
 	}
-	
-	public Trajectory readPointsData(AutoRunner.Routines routine, String direction) {
-		return trajectories.get(routine.toString() + direction);
-	}
-	
-	public Trajectory readPointsData(String trajectoryName) {
-		return trajectories.get(trajectoryName);
-	}
-	
-	public void waypointCSVToTrajectory(File waypointCSV) {
-		Trajectory trajectory = Pathfinder.readFromCSV(waypointCSV);
-		Trajectory traj = new PathfinderUtils(trajectory, Robot.DRIVE_TRAIN.leftEncoder, Robot.DRIVE_TRAIN.rightEncoder).getInitialTrajectory();
-		File f = new File(env.get("HOME") + "/trajectories" + waypointCSV.getName());
-		Pathfinder.writeToCSV(f, traj);
-		System.out.println("File has been written as: " + f.getName() + ", at the location: " + f.getAbsolutePath() + ".");
-	}
+	// uncomment for writing files, etc
+//	public void waypointCSVToTrajectory(File waypointCSV) {
+//		Trajectory trajectory = Pathfinder.readFromCSV(waypointCSV);
+//		Trajectory traj = new PathfinderUtils(trajectory, Robot.DRIVE_TRAIN.leftEncoder, Robot.DRIVE_TRAIN.rightEncoder).getInitialTrajectory();
+//		File f = new File("/home/lvuser/trajectories/" + waypointCSV.getName());
+//		Pathfinder.writeToCSV(f, traj);
+//		System.out.println("File has been written as: " + f.getName() + ", at the location: " + f.getAbsolutePath() + ".");
+//	}
 	
 	/*public void saveTrajectoryCSV(File trajectoryCSV) {
 		File f = new File("/trajectorycsv/");
