@@ -28,6 +28,9 @@ public class IntakeCommand extends CommandGroup {
         // arm.
     	requires(Robot.intakeMotors);
     	Robot.intakeMotors.intake();
+    	while(!Robot.intakeMotors.hasBox()) {}
+    	addSequential(new ExtendRollerPiston());
+    	Robot.intakeMotors.stop();
     	
     }
 }
