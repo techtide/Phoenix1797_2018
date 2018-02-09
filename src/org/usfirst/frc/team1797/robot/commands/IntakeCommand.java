@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 package org.usfirst.frc.team1797.robot.commands;
 
 import org.usfirst.frc.team1797.robot.Robot;
