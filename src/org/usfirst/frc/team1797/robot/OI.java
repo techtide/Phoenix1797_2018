@@ -46,7 +46,7 @@ public class OI {
 	public JoystickButton outtakeButton = new JoystickButton(operatorInput, 1);
 	
 	public OI() {
-		intakeButton.whenPressed(new IntakeCommand());
-		outtakeButton.whenPressed(new OuttakeCommand());
+		intakeButton.whenPressed(Robot.ROLLER_PISTON.isDown? new IntakeCommand():null);
+		outtakeButton.whenPressed(Robot.ROLLER_PISTON.isDown? new IntakeCommand():null);
 	}
 }

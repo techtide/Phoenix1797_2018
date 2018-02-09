@@ -29,7 +29,7 @@ public class OuttakeCommand extends CommandGroup {
     	requires(Robot.intakeMotors);
     	Robot.intakeMotors.outtake();
     	while(!Robot.intakeMotors.hasBox()) {}
-    	addSequential(new ExtendRollerPiston());
+    	addSequential(new ReverseRollerPiston());
     	Robot.intakeMotors.stop();
     }
 }
