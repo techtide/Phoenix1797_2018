@@ -55,16 +55,8 @@ public class Robot extends IterativeRobot {
 		oi = new OI();
 		autonomousChooser = new SendableChooser();
 		// Please stay away from the architecture unless it does not work; only use Routine enums and not strings. Kthx. ~ab
-		autonomousChooser.addDefault("Autonomous Do Nothing", new AutoDoNothing());
-<<<<<<< HEAD
-		autonomousChooser.addObject("Autonomous Cross Baseline 13", new AutoDoNothing());
-		autonomousChooser.addObject("Across Baseline 2 Curved [Left]", new AutoRunner(AutoRunner.Routines.BASELINE2CURVEDL));
-		autonomousChooser.addObject("Across Baseline 2 Curved [Right]", new AutoRunner(AutoRunner.Routines.BASELINE2CURVEDR));
-		autonomousChooser.addObject("Deposit Single Box 2 [Left]", new AutoRunner(AutoRunner.Routines.DEPOSITSINGLEBOX2L));
-		autonomousChooser.addObject("Deposit Single Box 2 [Right]", new AutoRunner(AutoRunner.Routines.DEPOSITSINGLEBOX2R));
 		// autonomousChooser.addObject("Deposit Single Box 13 [Left]", new AutoRunner(AutoRunner.Routines.DEPOSITSINGLEBOX13L));
 		// autonomousChooser.addObject("Deposit Single Box 13 [Right]", new AutoRunner(AutoRunner.Routines.DEPOSITSINGLEBOX13L));
-=======
 		autonomousChooser.addObject("Autonomous Cross Baseline 13", new AutoCrossBaseline13());
 		autonomousChooser.addObject("Autonomous Cross Baseline 1 Curved", new AutoCrossBaseline13());
 		autonomousChooser.addObject("Autonomous Cross Baseline 2 Curved", new AutoCrossBaseline13());
@@ -73,7 +65,6 @@ public class Robot extends IterativeRobot {
 		autonomousChooser.addObject("Autonomous Deposit Single Box 2", new AutoDoNothing());
 		autonomousChooser.addObject("Autonomous Deposit Single Box 3", new AutoDoNothing());
 		
->>>>>>> pr/24
 		SmartDashboard.putData("Autonomous Routine Selector", autonomousChooser);
 		SmartDashboard.putBoolean("Gyro Status", RobotMap.gyro.isConnected());
 		SmartDashboard.putNumber("Gyro Angle (deg)", RobotMap.gyro.getAngle());

@@ -30,28 +30,13 @@ public class AutoRunner extends Command {
 	
 	// Called just before this Command runs the first time
 	protected void initialize() {
-<<<<<<< HEAD
 		String gameData = DriverStation.getInstance().getGameSpecificMessage();
-		
-=======
->>>>>>> pr/24
 		Robot.DRIVE_TRAIN.resetEncoders();
 		pathfinderUtils = new PathfinderUtils(getTrajectory(gameData.charAt(0)), Robot.DRIVE_TRAIN.leftEncoder, Robot.DRIVE_TRAIN.rightEncoder);
 	}
 
-<<<<<<< HEAD
 	protected Trajectory getTrajectory(char side) {
 		return localTrajectoryManager.readPointsData(currentAutoRoutine.toString() + side);
-=======
-	protected Trajectory getTrajectory() {
-		if(DriverStation.getInstance().getGameSpecificMessage().charAt(0) == 'L') {
-			return localTrajectoryManager.readPointsData(currentAutoRoutine, "L");
-		} else if(DriverStation.getInstance().getGameSpecificMessage().charAt(0) == 'R') {
-			return localTrajectoryManager.readPointsData(currentAutoRoutine, "R");
-		} else {
-			return localTrajectoryManager.readPointsData(currentAutoRoutine, "");
-		}
->>>>>>> pr/24
 	}
 
 	// Called repeatedly when this Command is scheduled to run

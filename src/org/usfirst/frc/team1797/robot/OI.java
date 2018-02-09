@@ -1,6 +1,7 @@
 package org.usfirst.frc.team1797.robot;
 
 import org.usfirst.frc.team1797.robot.commands.IntakeCommand;
+import org.usfirst.frc.team1797.robot.commands.OuttakeCommand;
 
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
@@ -46,5 +47,6 @@ public class OI {
 	
 	public OI() {
 		intakeButton.whenPressed(new IntakeCommand());
+		outtakeButton.whenPressed(new OuttakeCommand());
 	}
 }

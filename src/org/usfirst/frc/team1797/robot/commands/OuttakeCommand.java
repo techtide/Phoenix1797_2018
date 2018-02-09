@@ -1,5 +1,7 @@
 package org.usfirst.frc.team1797.robot.commands;
 
+import org.usfirst.frc.team1797.robot.Robot;
+
 import edu.wpi.first.wpilibj.command.CommandGroup;
 
 /**
@@ -24,6 +26,8 @@ public class OuttakeCommand extends CommandGroup {
         // e.g. if Command1 requires chassis, and Command2 requires arm,
         // a CommandGroup containing them would require both the chassis and the
         // arm.
+    	requires(Robot.intakeMotors);
+    	Robot.intakeMotors.outtake();
     	
     }
 }
