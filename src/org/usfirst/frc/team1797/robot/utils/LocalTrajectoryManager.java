@@ -17,7 +17,7 @@ import jaci.pathfinder.Trajectory;
  */
 public class LocalTrajectoryManager {
 	private List<File> folder;
-	private HashMap<AutoRunner.Routines, Trajectory> trajectories;
+	private HashMap<String, Trajectory> trajectories;
 	
 	public LocalTrajectoryManager() {
 		// TODO Auto-generated constructor stub
@@ -25,7 +25,7 @@ public class LocalTrajectoryManager {
 		File x = new File(env.get("HOME") + "/trajectories");
 		folder = Arrays.asList(x.listFiles());
 		for(File f : folder) {
-			trajectories.put(fileToRoutine(f.getName()), Pathfinder.readFromCSV(f));
+			trajectories.put(f.getName(), Pathfinder.readFromCSV(f));
 		}
 	}
 	
@@ -33,8 +33,8 @@ public class LocalTrajectoryManager {
 		return AutoRunner.Routines.valueOf(name);
 	}
 	
-	public Trajectory readPointsData(AutoRunner.Routines routine) {
-		return trajectories.get(routine);
+	public Trajectory readPointsData(AutoRunner.Routines routine, String direction) {
+		return trajectories.get(routine.toString() + direction);
 	}
 	
 	public void writeRioFile(File fileToWrite, Trajectory traj) {
