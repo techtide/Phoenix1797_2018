@@ -2,7 +2,7 @@ package org.usfirst.frc.team1797.robot.commands.auto;
 
 import org.usfirst.frc.team1797.robot.Robot;
 import org.usfirst.frc.team1797.robot.RobotMap;
-import org.usfirst.frc.team1797.robot.utils.LocalTrajectoryManager;
+import org.usfirst.frc.team1797.robot.utils.TrajectoryManager;
 import org.usfirst.frc.team1797.robot.utils.PathfinderUtils;
 
 import edu.wpi.first.wpilibj.DriverStation;
@@ -16,7 +16,7 @@ public class AutoRunner extends Command {
 
 	private Routines currentAutoRoutine;
 	private PathfinderUtils pathfinderUtils;
-	private LocalTrajectoryManager localTrajectoryManager;
+	private TrajectoryManager localTrajectoryManager;
 	
 	public enum Routines {
 		BASELINE2CURVEDL, DEPOSITSINGLEBOX1L, DEPOSITSINGLEBOX2L, DONOTHING,
@@ -33,13 +33,12 @@ public class AutoRunner extends Command {
 	protected void initialize() {
 		String gameData = DriverStation.getInstance().getGameSpecificMessage();
 		
-		
 		Robot.DRIVE_TRAIN.resetEncoders();
-		pathfinderUtils = new PathfinderUtils(getTrajectory(), Robot.DRIVE_TRAIN.leftEncoder, Robot.DRIVE_TRAIN.rightEncoder);
+		pathfinderUtils = new PathfinderUtils(getTrajectory(gameData.charAt(0)), Robot.DRIVE_TRAIN.leftEncoder, Robot.DRIVE_TRAIN.rightEncoder);
 	}
 
-	protected Trajectory getTrajectory() {
-		return localTrajectoryManager.readPointsData(currentAutoRoutine);
+	protected Trajectory getTrajectory(char side) {
+		return localTrajectoryManager.readPointsData(currentAutoRoutine.toString() + side);
 	}
 
 	// Called repeatedly when this Command is scheduled to run
