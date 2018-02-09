@@ -1,7 +1,7 @@
 package org.usfirst.frc.team1797.robot;
 
-import org.usfirst.frc.team1797.robot.commands.IntakeCommand;
-import org.usfirst.frc.team1797.robot.commands.OuttakeCommand;
+//import org.usfirst.frc.team1797.robot.commands.IntakeCommand;
+//import org.usfirst.frc.team1797.robot.commands.OuttakeCommand;
 
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
@@ -46,7 +46,12 @@ public class OI {
 	public JoystickButton outtakeButton = new JoystickButton(operatorInput, 1);
 	
 	public OI() {
+<<<<<<< HEAD
 		intakeButton.whenPressed(Robot.ROLLER_PISTON.isDown? new IntakeCommand():null);
 		outtakeButton.whenPressed(Robot.ROLLER_PISTON.isDown? new IntakeCommand():null);
+=======
+		//intakeButton.whenPressed(new IntakeCommand());
+		//outtakeButton.whenPressed(new OuttakeCommand());
+>>>>>>> pr/25
 	}
 }

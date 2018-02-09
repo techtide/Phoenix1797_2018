@@ -32,11 +32,12 @@ public class AutoRunner extends Command {
 	protected void initialize() {
 		String gameData = DriverStation.getInstance().getGameSpecificMessage();
 		Robot.DRIVE_TRAIN.resetEncoders();
+		// look at this its weird
 		pathfinderUtils = new PathfinderUtils(getTrajectory(gameData.charAt(0)), Robot.DRIVE_TRAIN.leftEncoder, Robot.DRIVE_TRAIN.rightEncoder);
 	}
 
-	protected Trajectory getTrajectory(char side) {
-		return localTrajectoryManager.readPointsData(currentAutoRoutine.toString() + side);
+	protected Trajectory getTrajectory(char direction) {
+		return localTrajectoryManager.readPointsData(currentAutoRoutine.toString() + direction);
 	}
 
 	// Called repeatedly when this Command is scheduled to run

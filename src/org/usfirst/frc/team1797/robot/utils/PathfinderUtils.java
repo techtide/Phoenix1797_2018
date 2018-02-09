@@ -49,6 +49,12 @@ public class PathfinderUtils {
 		right.configurePIDVA(1, 0, 0, 1 / MAX_VELOCITY, 0);
 	}
 	
+	public PathfinderUtils(Waypoint[] waypoints) {
+		Trajectory.Config configuration = new Trajectory.Config(FIT_METHOD, Trajectory.Config.SAMPLES_HIGH, TIME_STEP, MAX_VELOCITY, MAX_ACCELERATION, MAX_JERK);
+		Trajectory trajectory = Pathfinder.generate(waypoints, configuration);
+		this.initialTrajectory = trajectory;
+	}
+	
 	public PathfinderUtils(Trajectory trajectory, Encoder leftEncoder, Encoder rightEncoder) {
 		this.initialTrajectory = trajectory;
 		TankModifier modifier = new TankModifier(trajectory);
