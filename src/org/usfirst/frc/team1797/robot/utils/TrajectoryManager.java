@@ -6,6 +6,9 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.usfirst.frc.team1797.robot.commands.auto.AutoRunner;
+import org.usfirst.frc.team1797.robot.commands.auto.AutoRunner.Routines;
+
 import jaci.pathfinder.Pathfinder;
 import jaci.pathfinder.Trajectory;
 
@@ -21,6 +24,10 @@ public class TrajectoryManager {
 		Map<String, String> env = System.getenv();
 		File x = new File(env.get("HOME") + "/trajectories");
 		folder = Arrays.asList(x.listFiles());
+		/* 
+		 * The CSV files need to be on the roboRIO, and need to include the alliance number and direction (at the end).
+		 * For instance, it could be "BASELINECURVED2L"; the title also needs to be in all capitals.
+		*/
 		for(File f : folder) {
 			trajectories.put(f.getName(), Pathfinder.readFromCSV(f));
 		}
@@ -32,6 +39,10 @@ public class TrajectoryManager {
 	
 	public Trajectory readPointsData(AutoRunner.Routines routine, String direction) {
 		return trajectories.get(routine.toString() + direction);
+	}
+	
+	public Trajectory readPointsData(String trajectoryName) {
+		return trajectories.get(trajectoryName);
 	}
 	
 	public void writeRioFile(File fileToWrite, Trajectory traj) {
