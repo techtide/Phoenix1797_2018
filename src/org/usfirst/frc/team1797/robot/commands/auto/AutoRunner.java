@@ -16,7 +16,8 @@ public class AutoRunner extends Command {
 
 	private Routines currentAutoRoutine;
 	private PathfinderUtils pathfinderUtils;
-	private TrajectoryManager localTrajectoryManager;
+	
+	private TrajectoryManager trajectoryManager;
 	
 	public enum Routines {
 		BASELINECURVED2, DEPOSITBOX1, DEPOSITBOX2, DEPOSITBOX3
@@ -26,6 +27,7 @@ public class AutoRunner extends Command {
 		// Use requires() here to declare subsystem dependencies
 		// eg. requires(chassis);
 		this.currentAutoRoutine = routine;
+		trajectoryManager = new TrajectoryManager();
 	}
 	
 	// Called just before this Command runs the first time
@@ -37,7 +39,7 @@ public class AutoRunner extends Command {
 	}
 
 	protected Trajectory getTrajectory(char direction) {
-		return localTrajectoryManager.readPointsData(currentAutoRoutine.toString() + direction);
+		return trajectoryManager.getTrajectoryFromFile(currentAutoRoutine.toString() + direction);
 	}
 
 	// Called repeatedly when this Command is scheduled to run
