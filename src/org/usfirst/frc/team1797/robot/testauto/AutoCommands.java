@@ -1,5 +1,5 @@
 package org.usfirst.frc.team1797.robot.testauto;
 
 public enum AutoCommands {
-	TEST_COMMAND
+	TEST_COMMAND, TEST_2_COMMAND
 }

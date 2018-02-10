@@ -1,6 +1,7 @@
 package org.usfirst.frc.team1797.robot.testauto;
 
 import org.usfirst.frc.team1797.robot.Robot;
+import org.usfirst.frc.team1797.robot.RobotMap;
 
 import edu.wpi.first.wpilibj.command.Command;
 
@@ -34,6 +35,9 @@ public class MoveStraight extends Command {
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
     		//Updates the drivetrain to move
+    	
+    		System.out.println(RobotMap.gyro.isConnected());
+    		System.out.println(RobotMap.gyro.getAngle());
     		Robot.DRIVE_TRAIN.arcadeDrive(-driveSpeed, 0);
     }
 

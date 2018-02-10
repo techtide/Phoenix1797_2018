@@ -10,9 +10,9 @@ public class AutoParser {
 	List<AutoInstruction> autoInstructions = new ArrayList<>();
 	
 	public AutoParser(AutoCommands command) {
-		if(command == AutoCommands.TEST_COMMAND) {
-			autoInstructions = InstructionLoader.loadTestInst();
-		} else {
+		if(command == AutoCommands.TEST_2_COMMAND) {
+			autoInstructions = InstructionLoader.loadMoveTurnInst();
+		} else if(command == AutoCommands.TEST_COMMAND) {
 			autoInstructions = InstructionLoader.loadTestInst();
 		}
 	}
