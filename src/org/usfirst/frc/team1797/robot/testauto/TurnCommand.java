@@ -1,7 +1,5 @@
 package org.usfirst.frc.team1797.robot.testauto;
 
-import java.util.function.DoubleToLongFunction;
-
 import org.usfirst.frc.team1797.robot.Robot;
 import org.usfirst.frc.team1797.robot.RobotMap;
 
