@@ -26,15 +26,14 @@ public class IntakeCommand extends CommandGroup {
         // e.g. if Command1 requires chassis, and Command2 requires arm,
         // a CommandGroup containing them would require both the chassis and the
         // arm.
-    	requires(Robot.intakeMotors);
-    	Robot.intakeMotors.intake();
-    	while(!Robot.intakeMotors.hasBox()) {}
-    	addSequential(new ExtendRollerPiston());
-    	Robot.intakeMotors.stop();
+//    	requires(Robot.intakeMotors);
+//    	Robot.intakeMotors.intake();
+//    	while(!Robot.intakeMotors.hasBox()) {}
+//    	addSequential(new ExtendRollerPiston());
+//    	Robot.intakeMotors.stop();
     	
     }
 }
-=======
 //package org.usfirst.frc.team1797.robot.commands;
 //
 //import org.usfirst.frc.team1797.robot.Robot;
@@ -68,4 +67,3 @@ public class IntakeCommand extends CommandGroup {
 //    	
 //    }
 //}
->>>>>>> pr/25
