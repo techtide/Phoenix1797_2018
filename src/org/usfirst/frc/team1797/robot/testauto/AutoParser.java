@@ -3,9 +3,10 @@ package org.usfirst.frc.team1797.robot.testauto;
 import java.util.ArrayList;
 import java.util.List;
 
+import edu.wpi.first.wpilibj.command.CommandGroup;
 import edu.wpi.first.wpilibj.command.Scheduler;
 
-public class AutoParser {
+public class AutoParser extends CommandGroup {
 	
 	List<AutoInstruction> autoInstructions = new ArrayList<>();
 	
