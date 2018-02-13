@@ -10,7 +10,6 @@
 	<classpathentry kind="var" path="USERLIBS_DIR/pathfinder-java.jar"/>
 	<classpathentry kind="var" path="USERLIBS_DIR/Pathfinder-Java.jar"/>
 	<classpathentry kind="var" path="USERLIBS_DIR/navx_frc.jar"/>
-	<classpathentry kind="lib" path="C:/Users/Sarah Covey/wpilib/user/java/lib/navx_frc.jar"/>
-	<classpathentry kind="lib" path="C:/Users/Sarah Covey/wpilib/user/java/lib/pathfinder-java.jar"/>
+	<classpathentry kind="lib" path="/Users/greenie/wpilib/user/java/lib/navx_frc.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
