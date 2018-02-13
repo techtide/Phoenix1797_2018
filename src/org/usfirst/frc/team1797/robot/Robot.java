@@ -8,7 +8,6 @@ import java.util.Map;
 import org.usfirst.frc.team1797.robot.commands.auto.AutoCrossBaseline13;
 import org.usfirst.frc.team1797.robot.commands.auto.AutoCrossBaseline2;
 import org.usfirst.frc.team1797.robot.commands.auto.AutoDoNothing;
-import org.usfirst.frc.team1797.robot.commands.auto.AutoRunner;
 // import org.usfirst.frc.team1797.robot.commands.auto.AutoCrossBaseline2Curved;
 import org.usfirst.frc.team1797.robot.subsystems.Drivetrain;
 import org.usfirst.frc.team1797.robot.subsystems.IntakeMotors;
@@ -19,7 +18,6 @@ import org.usfirst.frc.team1797.robot.subsystems.RollerPiston;
 //import org.usfirst.frc.team1797.robot.subsystems.RollerPiston;
 //import org.usfirst.frc.team1797.robot.subsystems.IntakeMotors;
 //import org.usfirst.frc.team1797.robot.subsystems.IntakePistons;
-import org.usfirst.frc.team1797.robot.utils.TrajectoryManager;
 
 import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.command.Command;

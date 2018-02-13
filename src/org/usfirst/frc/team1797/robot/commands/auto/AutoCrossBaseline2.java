@@ -1,8 +1,8 @@
 package org.usfirst.frc.team1797.robot.commands.auto;
 
-import org.usfirst.frc.team1797.robot.testauto.Direction;
-import org.usfirst.frc.team1797.robot.testauto.MoveStraight;
-import org.usfirst.frc.team1797.robot.testauto.TurnCommand;
+import org.usfirst.frc.team1797.robot.auto.autoutils.Direction;
+import org.usfirst.frc.team1797.robot.auto.autoutils.MoveStraight;
+import org.usfirst.frc.team1797.robot.auto.autoutils.TurnCommand;
 
 import edu.wpi.first.wpilibj.command.CommandGroup;
 
