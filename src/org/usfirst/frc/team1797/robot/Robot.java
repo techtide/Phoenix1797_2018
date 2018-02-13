@@ -81,7 +81,8 @@ public class Robot extends IterativeRobot {
 //		autonomousChooser.addObject("Autonomous Deposit Single Box 1", new AutoRunner(AutoRunner.Routines.DEPOSITBOX1));
 //		autonomousChooser.addObject("Autonomous Deposit Single Box 2", new AutoRunner(AutoRunner.Routines.DEPOSITBOX2));
 //		autonomousChooser.addObject("Autonomous Deposit Single Box 3", new AutoRunner(AutoRunner.Routines.DEPOSITBOX3));
-		autonomousChooser.addDefault("test", new AutoCrossBaseline2());
+		//autonomousChooser.addDefault("test", new AutoCrossBaseline2());
+		autonomousChooser.addDefault("crossbaseline2", new AutoCrossBaseline2());
 		
 		SmartDashboard.putData("Autonomous Routine Selector", autonomousChooser);
 		// SmartDashboard.putBoolean("Gyro Status", RobotMap.gyro.isConnected());
@@ -128,6 +129,8 @@ public class Robot extends IterativeRobot {
 	@Override
 	public void autonomousPeriodic() {
 		Scheduler.getInstance().run();
+		System.out.println("Left Distance: " + Robot.DRIVE_TRAIN.leftEncoder.getDistance()
+					  + "Right Distance: " + Robot.DRIVE_TRAIN.rightEncoder.getDistance());
 	}
 
 	@Override
@@ -146,6 +149,7 @@ public class Robot extends IterativeRobot {
 	@Override
 	public void teleopPeriodic() {
 		Scheduler.getInstance().run();
+		
 	}
 
 	/**
