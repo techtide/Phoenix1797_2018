@@ -1,4 +1,4 @@
-package org.usfirst.frc.team1797.robot.commands.auto;
+package org.usfirst.frc.team1797.robot.auto;
 
 import org.usfirst.frc.team1797.robot.commands.auto.autoutils.Direction;
 import org.usfirst.frc.team1797.robot.commands.auto.autoutils.MoveStraight;

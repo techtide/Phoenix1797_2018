@@ -5,12 +5,15 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 
-import org.usfirst.frc.team1797.robot.commands.auto.AutoCrossBaseline13;
-import org.usfirst.frc.team1797.robot.commands.auto.AutoCrossBaseline2;
-import org.usfirst.frc.team1797.robot.commands.auto.AutoDoNothing;
+import org.usfirst.frc.team1797.robot.auto.AutoCrossBaseline13;
+import org.usfirst.frc.team1797.robot.auto.AutoCrossBaseline2;
+import org.usfirst.frc.team1797.robot.auto.AutoDoNothing;
+import org.usfirst.frc.team1797.robot.commands.RollerLeft;
+import org.usfirst.frc.team1797.robot.commands.RollerRight;
 // import org.usfirst.frc.team1797.robot.commands.auto.AutoCrossBaseline2Curved;
 import org.usfirst.frc.team1797.robot.subsystems.Drivetrain;
 import org.usfirst.frc.team1797.robot.subsystems.IntakeMotors;
+import org.usfirst.frc.team1797.robot.subsystems.Roller;
 import org.usfirst.frc.team1797.robot.subsystems.RollerPiston;
 // import org.usfirst.frc.team1797.robot.subsystems.Flipper;
 // import org.usfirst.frc.team1797.robot.subsystems.Ramp;
@@ -22,6 +25,7 @@ import org.usfirst.frc.team1797.robot.subsystems.RollerPiston;
 import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
+import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
@@ -37,6 +41,7 @@ public class Robot extends IterativeRobot {
 
 	//public static final DriveTrain DRIVE_TRAIN = new DriveTrain();
 	public static final Drivetrain DRIVE_TRAIN = new Drivetrain();
+	public static final Roller ROLLER = new Roller();
 	// public static final IntakeMotors intakeMotors = new IntakeMotors();
 	//public static final IntakePistons intakePistons = new IntakePistons();
 	// public static final Roller ROLLER = new Roller();
