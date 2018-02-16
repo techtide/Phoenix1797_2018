@@ -23,12 +23,12 @@ public class RollerPiston extends Subsystem {
 	
 	public void raise() {
 		piston.set(DoubleSolenoid.Value.kForward);
-		lastActuation = System.currentTimeMillis() - lastActuation;
+		lastActuation = System.currentTimeMillis();
 	}
 	
 	public void reverse() {
 		piston.set(DoubleSolenoid.Value.kReverse);
-		lastActuation = System.currentTimeMillis() - lastActuation;
+		lastActuation = System.currentTimeMillis();
 	}
 	
 	public void stop() {
