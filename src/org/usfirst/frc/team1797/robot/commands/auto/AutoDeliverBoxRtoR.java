@@ -1,8 +1,8 @@
 package org.usfirst.frc.team1797.robot.commands.auto;
 
-import org.usfirst.frc.team1797.robot.commands.ExtendRollerPiston;
-import org.usfirst.frc.team1797.robot.commands.ReverseRollerPiston;
-import org.usfirst.frc.team1797.robot.commands.RollerLeft;
+//import org.usfirst.frc.team1797.robot.commands.ExtendRollerPiston;
+//import org.usfirst.frc.team1797.robot.commands.ReverseRollerPiston;
+//import org.usfirst.frc.team1797.robot.commands.RollerLeft;
 import org.usfirst.frc.team1797.robot.commands.auto.autoutils.Direction;
 import org.usfirst.frc.team1797.robot.commands.auto.autoutils.MoveStraight;
 import org.usfirst.frc.team1797.robot.commands.auto.autoutils.TurnCommand;
@@ -33,8 +33,8 @@ public class AutoDeliverBoxRtoR extends CommandGroup {
         // arm.
     		addSequential(new MoveStraight(Direction.FORWARD, .75, 140));
     		addSequential(new TurnCommand(Direction.RIGHT, .5, 5));
-    		addSequential(new ExtendRollerPiston());
-    		addSequential(new RollerLeft());
-    		addSequential(new ReverseRollerPiston());
+//    		addSequential(new ExtendRollerPiston());
+//    		addSequential(new RollerLeft());
+//    		addSequential(new ReverseRollerPiston());
     }
 }

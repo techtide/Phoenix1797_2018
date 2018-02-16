@@ -24,8 +24,8 @@ public class Robot extends IterativeRobot {
 	public static final Drivetrain DRIVE_TRAIN = new Drivetrain();
 	// public static final IntakeMotors intakeMotors = new IntakeMotors();
 	//public static final IntakePistons intakePistons = new IntakePistons();
-	public static final Roller ROLLER = new Roller();
-	public static final RollerPiston ROLLER_PISTON = new RollerPiston();
+	// public static final Roller ROLLER = new Roller();
+	// public static final RollerPiston ROLLER_PISTON = new RollerPiston();
 	// public static final Ramp RAMP = new Ramp();
 	public static OI oi;
 
