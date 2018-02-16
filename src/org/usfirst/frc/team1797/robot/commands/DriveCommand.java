@@ -31,8 +31,8 @@ public class DriveCommand extends Command {
     		double z = Robot.oi.driverInput.getRawAxis(RobotMap.DRIVER_HORIZONTAL_AXIS);
     		
     		//function used to alter values
-    		x *= Math.abs(x);
-    		z *= Math.abs(z);
+    		x = Math.abs(x);
+    		z = Math.abs(z);
     		
     		//Input to drive
     		//System.out.println(Robot.oi.driverInput.getRawAxis(RobotMap.DRIVER_FORWARD_AXIS));

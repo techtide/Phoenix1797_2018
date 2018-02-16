@@ -22,24 +22,33 @@ public class TurnCommand extends Command {
     public TurnCommand(Direction d, double turnRate, double turnAngle) {
         this.turnDirection = d;
         this.turnRate = turnRate;
-        this.turnAngle = d == Direction.LEFT ? -turnAngle : turnAngle;
+        this.turnAngle = turnAngle;
+        this.targetAngle = turnAngle;
         this.gyro = RobotMap.gyro;
         
-        this.targetAngle = gyro.getAngle() + this.turnAngle;
-        
-        if(targetAngle >= 360) {
-        		targetAngle -= 360;
-        }
-        
     		requires(Robot.DRIVE_TRAIN);
+    		
     }
 
     // Called just before this Command runs the first time
     protected void initialize() {
+    		//this.gyro.reset();
+    		//this.turnAngle = turnDirection == Direction.LEFT ? -turnAngle : turnAngle;
+        
+        //this.targetAngle = gyro.getAngle() + this.turnAngle;
+        
+       /* if(targetAngle >= 360) {
+        		targetAngle -= 360;
+        }*/
+    	
+    		System.out.println();
+    		System.out.println("Target Angle: " + targetAngle);
     }
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
+    		System.out.println("Angle: " + gyro.getAngle());
+    	
     		if(turnDirection == Direction.RIGHT) {
     			Robot.DRIVE_TRAIN.tankDrive(turnRate, -turnRate);
     		} else {
