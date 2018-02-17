@@ -1,12 +1,9 @@
-package org.usfirst.frc.team1797.robot.commands.auto;
-
-// import org.usfirst.frc.team1797.robot.commands.ExtendRollerPiston;
-// import org.usfirst.frc.team1797.robot.commands.ReverseRollerPiston;
-// import org.usfirst.frc.team1797.robot.commands.RollerRight;
+package org.usfirst.frc.team1797.robot.auto;
 
 import org.usfirst.frc.team1797.robot.commands.auto.autoutils.Direction;
 import org.usfirst.frc.team1797.robot.commands.auto.autoutils.MoveStraight;
 import org.usfirst.frc.team1797.robot.commands.auto.autoutils.TurnCommand;
+import org.usfirst.frc.team1797.robot.commands.RollerRight;
 
 import edu.wpi.first.wpilibj.command.CommandGroup;
 
@@ -32,10 +29,8 @@ public class AutoDeliverBoxLtoL extends CommandGroup {
         // e.g. if Command1 requires chassis, and Command2 requires arm,
         // a CommandGroup containing them would require both the chassis and the
         // arm.
-    		addSequential(new MoveStraight(Direction.FORWARD, .75, 140));
-    		addSequential(new TurnCommand(Direction.RIGHT, .5, 5));
-//    		addSequential(new ExtendRollerPiston());
-//    		addSequential(new RollerRight());
-//    		addSequential(new ReverseRollerPiston());
+    	addSequential(new MoveStraight(Direction.FORWARD, .75, 140));
+    	addSequential(new TurnCommand(Direction.RIGHT, .5, 5));
+    	addSequential(new RollerRight());
     }
 }

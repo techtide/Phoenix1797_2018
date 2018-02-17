@@ -23,6 +23,7 @@ public class MoveStraight extends Command {
     
     // Called just before this Command runs the first time
     protected void initialize() {
+    		System.out.println();
     		System.out.println("[INFO] Initializing moving command!");
     		
     		//Resetting encoders to allow precise measurements
@@ -36,8 +37,7 @@ public class MoveStraight extends Command {
     protected void execute() {
     		//Updates the drivetrain to move
     	
-    		System.out.println(RobotMap.gyro.isConnected());
-    		System.out.println(RobotMap.gyro.getAngle());
+    		System.out.println("Distance: " + Robot.DRIVE_TRAIN.getAverageEncoderDistance());
     		Robot.DRIVE_TRAIN.arcadeDrive(-driveSpeed, 0);
     }
 
