@@ -19,6 +19,7 @@ public class TurnCommand extends Command {
 	private AHRS gyro;
 	private double targetAngle;
 	
+	
     public TurnCommand(Direction d, double turnRate, double turnAngle) {
     		this.turnDirection = d;
         this.turnRate = turnRate;
@@ -47,10 +48,12 @@ public class TurnCommand extends Command {
 //    			Robot.DRIVE_TRAIN.tankDrive(-turnRate, turnRate);
 //    		}
     			if(turnDirection == Direction.RIGHT) {
-				Robot.DRIVE_TRAIN.tankDrive(turnRate, -turnRate);
-			} else if(turnDirection == Direction.LEFT) {
-				Robot.DRIVE_TRAIN.tankDrive(-turnRate, turnRate);
-			}
+				//Robot.DRIVE_TRAIN.tankDrive(turnRate, -turnRate);
+    				Robot.DRIVE_TRAIN.autoTankDrive(turnRate, -turnRate);
+    			} else {
+				//Robot.DRIVE_TRAIN.tankDrive(-turnRate, turnRate);
+    				Robot.DRIVE_TRAIN.autoTankDrive(-turnRate, turnRate);
+    			}
     }
 
     // Make this return true when this Command no longer needs to run execute()

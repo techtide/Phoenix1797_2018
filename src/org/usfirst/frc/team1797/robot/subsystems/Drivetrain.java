@@ -4,7 +4,9 @@ import org.usfirst.frc.team1797.robot.RobotMap;
 import org.usfirst.frc.team1797.robot.commands.DriveCommand;
 
 import edu.wpi.first.wpilibj.Encoder;
+import edu.wpi.first.wpilibj.RobotDrive;
 import edu.wpi.first.wpilibj.SpeedControllerGroup;
+import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.VictorSP;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
@@ -31,6 +33,11 @@ public class Drivetrain extends Subsystem {
 	private final SpeedControllerGroup right = new SpeedControllerGroup(right1, right2);
 	
 	private final DifferentialDrive DifferentialDrive = new DifferentialDrive(left, right);
+	
+	private final double Kp = 0.03;
+	
+	@SuppressWarnings("deprecation")
+	public final RobotDrive robotDrive = new RobotDrive(left, right);
 	
 	// encoders
 	public final Encoder leftEncoder = new Encoder(RobotMap.getPort("left_encoder_1"),
@@ -62,6 +69,19 @@ public class Drivetrain extends Subsystem {
 	public void arcadeDrive(double x, double z){
 		DifferentialDrive.arcadeDrive(x, z);
 	}
+	
+	@SuppressWarnings("deprecation")
+	public void autoTankDrive(double leftSpeed, double rightSpeed) {
+		DifferentialDrive.tankDrive((leftSpeed-(Kp*RobotMap.gyro.getAngle())), 
+								  (rightSpeed-(Kp*RobotMap.gyro.getAngle())));
+		
+	}
+	
+//	@SuppressWarnings("deprecation")
+//	public void proportionalArcadeDrive(double speed, double turnRate){
+//		robotDrive.drive(speed, (turnRate));
+//		Timer.delay(0.01);
+//	}
 	
 	public void tankDrive(double leftSpeed, double rightSpeed) {
 		DifferentialDrive.tankDrive(leftSpeed, rightSpeed);

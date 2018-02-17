@@ -4,6 +4,7 @@ import org.usfirst.frc.team1797.robot.commands.auto.AutoDeliverBoxLeftRight;
 import org.usfirst.frc.team1797.robot.subsystems.Drivetrain;
 
 import edu.wpi.first.wpilibj.IterativeRobot;
+import edu.wpi.first.wpilibj.RobotDrive;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
@@ -30,6 +31,7 @@ public class Robot extends IterativeRobot {
 
 	Command autonomousCommand;
 	SendableChooser<Command> chooser = new SendableChooser<>();
+	@SuppressWarnings("deprecation")
 	
 	SendableChooser autonomousChooser;
 	
@@ -41,9 +43,9 @@ public class Robot extends IterativeRobot {
 	public void robotInit() {
 		oi = new OI();
 		autonomousChooser = new SendableChooser();
-		
+		RobotMap.gyro.reset();
+		RobotMap.gyro.resetDisplacement();
 		autonomousChooser.addDefault("Box L to R ", new AutoDeliverBoxLeftRight());
-		
 		
 		SmartDashboard.putData("Autonomous Routine Selector", autonomousChooser);
 		// SmartDashboard.putBoolean("Gyro Status", RobotMap.gyro.isConnected());

@@ -37,7 +37,11 @@ public class MoveStraight extends Command {
     protected void execute() {
     		//Updates the drivetrain to move
     	
-    		System.out.println("Distance: " + Robot.DRIVE_TRAIN.getAverageEncoderDistance());
+    		// System.out.println("Distance: " + Robot.DRIVE_TRAIN.getAverageEncoderDistance());
+//    		System.out.println("Left: "+Robot.DRIVE_TRAIN.leftEncoder.getDistance()+"\t"
+//    				+ "Right: "+Robot.DRIVE_TRAIN.rightEncoder.getDistance());
+//    		
+    		System.out.println("∠: " + RobotMap.gyro.getAngle() + "˚");
     		Robot.DRIVE_TRAIN.arcadeDrive(-driveSpeed, 0);
     }
 
