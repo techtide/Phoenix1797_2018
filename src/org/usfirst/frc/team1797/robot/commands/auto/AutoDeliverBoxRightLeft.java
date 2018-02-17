@@ -27,14 +27,10 @@ public class AutoDeliverBoxRightLeft extends CommandGroup {
          * move forward 60.735 */
     	
        requires(Robot.DRIVE_TRAIN);
-       addSequential(new MoveStraight(Direction.FORWARD, 0.8, 80));
-       addSequential(new TurnCommand(Direction.RIGHT, 0.75, 20));
-       addSequential(new MoveStraight(Direction.FORWARD, 0.8, 29.238));
-       addSequential(new TurnCommand(Direction.LEFT, 0.75, 20));
-       addSequential(new MoveStraight(Direction.FORWARD, 0.8, 121.26));
-       addSequential(new TurnCommand(Direction.LEFT, 0.75, 90));
+       addSequential(new MoveStraight(Direction.FORWARD, 0.8, 228.735));
+       addSequential(new TurnCommand(Direction.RIGHT, 0.5, 250));
        addSequential(new MoveStraight(Direction.FORWARD, 0.8, 192.5));
-       addSequential(new TurnCommand(Direction.LEFT, 0.75, 90));
+       addSequential(new TurnCommand(Direction.RIGHT, 0.5, 190));
        addSequential(new MoveStraight(Direction.FORWARD, 0.8, 60.735));
 //       addSequential(new ExtendRollerPiston());
 //       addSequential(new RollerLeft());

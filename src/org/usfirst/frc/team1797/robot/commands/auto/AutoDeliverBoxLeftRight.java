@@ -1,6 +1,7 @@
 package org.usfirst.frc.team1797.robot.commands.auto;
 
 import org.usfirst.frc.team1797.robot.Robot;
+
 // import org.usfirst.frc.team1797.robot.commands.ExtendRollerPiston;
 // import org.usfirst.frc.team1797.robot.commands.ReverseRollerPiston;
 // import org.usfirst.frc.team1797.robot.commands.RollerRight;
@@ -24,10 +25,13 @@ public class AutoDeliverBoxLeftRight extends CommandGroup {
     	
     		requires(Robot.DRIVE_TRAIN);
     		addSequential(new MoveStraight(Direction.FORWARD, 0.8, 228.735));
-    		addSequential(new TurnCommand(Direction.RIGHT, 0.75, 90));
+    		addSequential(new TurnCommand(Direction.RIGHT, 0.5, 70));
     		addSequential(new MoveStraight(Direction.FORWARD, 0.8, 192));
-    		addSequential(new TurnCommand(Direction.RIGHT, 0.75, 90));
+    		addSequential(new TurnCommand(Direction.RIGHT, 0.5, 175));
     		addSequential(new MoveStraight(Direction.FORWARD, 0.8, 60.735));
+    		//addSequential(new ExtendRollerPiston());
+    		//addSequential(new RollerRight());
+    		//addSequential(new ReverseRollerPiston());
 //    		addSequential(new ExtendRollerPiston());
 //    		addSequential(new RollerRight());
 //    		addSequential(new ReverseRollerPiston());
