@@ -24,6 +24,9 @@ public class TurnCommand extends Command {
         this.turnRate = turnRate;
         this.turnAngle = turnAngle;
         this.targetAngle = turnAngle;
+        this.turnAngle = d == Direction.LEFT ? -turnAngle : turnAngle;
+        this.gyro.reset();
+        this.gyro.resetDisplacement();
         this.gyro = RobotMap.gyro;
         
     		requires(Robot.DRIVE_TRAIN);
