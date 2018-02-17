@@ -20,43 +20,38 @@ public class TurnCommand extends Command {
 	private double targetAngle;
 	
     public TurnCommand(Direction d, double turnRate, double turnAngle) {
-        this.turnDirection = d;
+    		this.turnDirection = d;
         this.turnRate = turnRate;
         this.turnAngle = turnAngle;
         this.targetAngle = turnAngle;
         this.turnAngle = d == Direction.LEFT ? -turnAngle : turnAngle;
-        this.gyro.reset();
-        this.gyro.resetDisplacement();
-        this.gyro = RobotMap.gyro;
+        System.out.println("Direction: {" + d.toString() + "}, Turn rate: {" + 
+        		turnRate + "}, Turn angle: {" + turnAngle + "}");
         
-    		requires(Robot.DRIVE_TRAIN);
-    		
     }
 
     // Called just before this Command runs the first time
     protected void initialize() {
-    		//this.gyro.reset();
-    		//this.turnAngle = turnDirection == Direction.LEFT ? -turnAngle : turnAngle;
-        
-        //this.targetAngle = gyro.getAngle() + this.turnAngle;
-        
-       /* if(targetAngle >= 360) {
-        		targetAngle -= 360;
-        }*/
-    	
-    		System.out.println();
-    		System.out.println("Target Angle: " + targetAngle);
+    		this.gyro = RobotMap.gyro;
+        this.gyro.reset();
+        this.gyro.resetDisplacement();
+    		//System.out.println("Target Angle: " + targetAngle);
     }
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    		System.out.println("Angle: " + gyro.getAngle());
-    	
-    		if(turnDirection == Direction.RIGHT) {
-    			Robot.DRIVE_TRAIN.tankDrive(turnRate, -turnRate);
-    		} else {
-    			Robot.DRIVE_TRAIN.tankDrive(-turnRate, turnRate);
-    		}
+    		//System.out.println("Angle: " + gyro.getAngle());
+    		
+//    		if(turnDirection == Direction.RIGHT) {
+//    			Robot.DRIVE_TRAIN.tankDrive(turnRate, -turnRate);
+//    		} else {
+//    			Robot.DRIVE_TRAIN.tankDrive(-turnRate, turnRate);
+//    		}
+    			if(turnDirection == Direction.RIGHT) {
+				Robot.DRIVE_TRAIN.tankDrive(turnRate, -turnRate);
+			} else if(turnDirection == Direction.LEFT) {
+				Robot.DRIVE_TRAIN.tankDrive(-turnRate, turnRate);
+			}
     }
 
     // Make this return true when this Command no longer needs to run execute()
