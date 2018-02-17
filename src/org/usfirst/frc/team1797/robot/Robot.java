@@ -1,9 +1,6 @@
 package org.usfirst.frc.team1797.robot;
 
-<<<<<<< HEAD
-import org.usfirst.frc.team1797.robot.commands.auto.AutoCrossBaseline2;
 import org.usfirst.frc.team1797.robot.subsystems.Drivetrain;
-=======
 import java.io.File;
 import java.util.Arrays;
 import java.util.List;
@@ -12,14 +9,12 @@ import java.util.Map;
 import org.usfirst.frc.team1797.robot.auto.AutoCrossBaseline13;
 import org.usfirst.frc.team1797.robot.auto.AutoCrossBaseline2;
 import org.usfirst.frc.team1797.robot.auto.AutoDoNothing;
-import org.usfirst.frc.team1797.robot.commands.RollerLeft;
-import org.usfirst.frc.team1797.robot.commands.RollerRight;
-// import org.usfirst.frc.team1797.robot.commands.auto.AutoCrossBaseline2Curved;
+//import org.usfirst.frc.team1797.robot.commands.RollerLeft;
+//import org.usfirst.frc.team1797.robot.commands.RollerRight;
 import org.usfirst.frc.team1797.robot.subsystems.Drivetrain;
-import org.usfirst.frc.team1797.robot.subsystems.IntakeMotors;
->>>>>>> 8186c012937798cf292664f33738833fba748948
-import org.usfirst.frc.team1797.robot.subsystems.Roller;
-import org.usfirst.frc.team1797.robot.subsystems.RollerPiston;
+//import org.usfirst.frc.team1797.robot.subsystems.IntakeMotors;
+//import org.usfirst.frc.team1797.robot.subsystems.Roller;
+//import org.usfirst.frc.team1797.robot.subsystems.RollerPiston;
 
 import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.command.Command;
@@ -39,7 +34,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 public class Robot extends IterativeRobot {
 
 	public static final Drivetrain DRIVE_TRAIN = new Drivetrain();
-	public static final Roller ROLLER = new Roller();
+	// public static final Roller ROLLER = new Roller();
 	// public static final IntakeMotors intakeMotors = new IntakeMotors();
 	//public static final IntakePistons intakePistons = new IntakePistons();
 	// public static final Roller ROLLER = new Roller();
@@ -62,9 +57,7 @@ public class Robot extends IterativeRobot {
 		oi = new OI();
 		autonomousChooser = new SendableChooser();
 		
-<<<<<<< HEAD
 		autonomousChooser.addDefault("test", new AutoCrossBaseline2());
-=======
 //		// plez jus dis unce
 //		TrajectoryManager manager = new TrajectoryManager();
 //		System.out.println(System.getProperty("user.dir"));
@@ -88,7 +81,6 @@ public class Robot extends IterativeRobot {
 //		autonomousChooser.addObject("Autonomous Deposit Single Box 3", new AutoRunner(AutoRunner.Routines.DEPOSITBOX3));
 		//autonomousChooser.addDefault("test", new AutoCrossBaseline2());
 		autonomousChooser.addDefault("crossbaseline2", new AutoCrossBaseline2());
->>>>>>> 8186c012937798cf292664f33738833fba748948
 		
 		SmartDashboard.putData("Autonomous Routine Selector", autonomousChooser);
 		// SmartDashboard.putBoolean("Gyro Status", RobotMap.gyro.isConnected());
