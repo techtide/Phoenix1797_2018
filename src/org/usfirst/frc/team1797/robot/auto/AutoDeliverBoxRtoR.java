@@ -1,6 +1,5 @@
 package org.usfirst.frc.team1797.robot.auto;
 
-import org.usfirst.frc.team1797.robot.commands.RollerLeft;
 import org.usfirst.frc.team1797.robot.commands.auto.autoutils.Direction;
 import org.usfirst.frc.team1797.robot.commands.auto.autoutils.MoveStraight;
 import org.usfirst.frc.team1797.robot.commands.auto.autoutils.TurnCommand;
@@ -29,8 +28,8 @@ public class AutoDeliverBoxRtoR extends CommandGroup {
         // e.g. if Command1 requires chassis, and Command2 requires arm,
         // a CommandGroup containing them would require both the chassis and the
         // arm.
-    	addSequential(new MoveStraight(Direction.FORWARD, .75, 140));
-    	addSequential(new TurnCommand(Direction.RIGHT, .5, 5));
-    	addSequential(new RollerLeft());
+	    	addSequential(new MoveStraight(Direction.FORWARD, .75, 140));
+	    	addSequential(new TurnCommand(Direction.RIGHT, .5, 5));
+	    	// addSequential(new RollerLeft());
     }
 }
