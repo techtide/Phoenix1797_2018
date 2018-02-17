@@ -1,7 +1,12 @@
 package org.usfirst.frc.team1797.robot.commands.auto;
 
-import org.usfirst.frc.team1797.robot.Robot;
+import java.time.Duration;
+import java.util.concurrent.Callable;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.Future;
 
+import org.usfirst.frc.team1797.robot.Robot;
 // import org.usfirst.frc.team1797.robot.commands.ExtendRollerPiston;
 // import org.usfirst.frc.team1797.robot.commands.ReverseRollerPiston;
 // import org.usfirst.frc.team1797.robot.commands.RollerRight;
@@ -9,26 +14,33 @@ import org.usfirst.frc.team1797.robot.commands.auto.autoutils.Direction;
 import org.usfirst.frc.team1797.robot.commands.auto.autoutils.MoveStraight;
 import org.usfirst.frc.team1797.robot.commands.auto.autoutils.TurnCommand;
 
+import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.command.CommandGroup;
 
 /**
  *
  */
 public class AutoDeliverBoxLeftRight extends CommandGroup {
-
+	
     public AutoDeliverBoxLeftRight() {
         /*MOVE 228.735 
          * turn 90 deg right
          * move forward 192
          * turn right 90 deg
          * move forward 60.735 */
+
     	
     		requires(Robot.DRIVE_TRAIN);
     		addSequential(new MoveStraight(Direction.FORWARD, 0.8, 228.735));
+    		Timer.delay(1);
     		addSequential(new TurnCommand(Direction.RIGHT, 0.5, 70));
+    		Timer.delay(1);
     		addSequential(new MoveStraight(Direction.FORWARD, 0.8, 192));
+    		Timer.delay(1);
     		addSequential(new TurnCommand(Direction.RIGHT, 0.5, 70));
+    		Timer.delay(1);
     		addSequential(new MoveStraight(Direction.FORWARD, 0.8, 60.735));
+    		Timer.delay(1);
     		//addSequential(new ExtendRollerPiston());
     		//addSequential(new RollerRight());
     		//addSequential(new ReverseRollerPiston());
@@ -36,4 +48,5 @@ public class AutoDeliverBoxLeftRight extends CommandGroup {
 //    		addSequential(new RollerRight());
 //    		addSequential(new ReverseRollerPiston());
     }
+    		
 }

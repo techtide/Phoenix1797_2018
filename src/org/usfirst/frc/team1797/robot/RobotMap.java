@@ -17,11 +17,20 @@ import edu.wpi.first.wpilibj.interfaces.Gyro;
 public class RobotMap {
 
 	// delay method
-	private static final double DELAY_SECONDS = 0;
+	private static final double AUTO_DELAY_SECONDS = 0.0;
+	private static final double DELAY_SECONDS = 10.0;
+	private static boolean x = false;
 
+	public static void autoDelay() {
+		long startTime = System.currentTimeMillis();
+		while (AUTO_DELAY_SECONDS * 1000 + startTime >= System.currentTimeMillis()) {}
+	}
+	
 	public static void delay() {
 		long startTime = System.currentTimeMillis();
-		while (DELAY_SECONDS * 1000 + startTime >= System.currentTimeMillis()) {}
+		while (DELAY_SECONDS * 1000 + startTime >= System.currentTimeMillis()) {
+			if(x) break;
+		}
 	}
 
 	// Robot controls

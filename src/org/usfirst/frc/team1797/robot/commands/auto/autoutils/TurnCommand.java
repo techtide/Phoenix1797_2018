@@ -25,9 +25,8 @@ public class TurnCommand extends Command {
         this.turnAngle = turnAngle;
         this.targetAngle = turnAngle;
         this.turnAngle = d == Direction.LEFT ? -turnAngle : turnAngle;
-        System.out.println("Direction: {" + d.toString() + "}, Turn rate: {" + 
-        		turnRate + "}, Turn angle: {" + turnAngle + "}");
-        
+//        System.out.println("Direction: {" + d.toString() + "}, Turn rate: {" + 
+//        		turnRate + "}, Turn angle: {" + turnAngle + "}"); 
     }
 
     // Called just before this Command runs the first time
