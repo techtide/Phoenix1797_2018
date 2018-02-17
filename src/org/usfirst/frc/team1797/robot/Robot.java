@@ -1,25 +1,12 @@
 package org.usfirst.frc.team1797.robot;
 
-import org.usfirst.frc.team1797.robot.subsystems.Drivetrain;
-import java.io.File;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Map;
-
-import org.usfirst.frc.team1797.robot.auto.AutoCrossBaseline13;
 import org.usfirst.frc.team1797.robot.auto.AutoCrossBaseline2;
-import org.usfirst.frc.team1797.robot.auto.AutoDoNothing;
-//import org.usfirst.frc.team1797.robot.commands.RollerLeft;
-//import org.usfirst.frc.team1797.robot.commands.RollerRight;
+import org.usfirst.frc.team1797.robot.commands.auto.AutoDeliverBoxLeftRight;
 import org.usfirst.frc.team1797.robot.subsystems.Drivetrain;
-//import org.usfirst.frc.team1797.robot.subsystems.IntakeMotors;
-//import org.usfirst.frc.team1797.robot.subsystems.Roller;
-//import org.usfirst.frc.team1797.robot.subsystems.RollerPiston;
 
 import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
-import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
@@ -53,34 +40,10 @@ public class Robot extends IterativeRobot {
 	 */
 	@Override
 	public void robotInit() {
-		System.out.println("testing 2 see if code is working");
 		oi = new OI();
 		autonomousChooser = new SendableChooser();
 		
-		autonomousChooser.addDefault("test", new AutoCrossBaseline2());
-//		// plez jus dis unce
-//		TrajectoryManager manager = new TrajectoryManager();
-//		System.out.println(System.getProperty("user.dir"));
-//		File f = new File("/Users/Arman/Trajectories");
-//		List<File> list = Arrays.asList(f.listFiles());
-//		System.out.println("List size: " +list.size());
-//		for(int i = 0; i < list.size(); i++) {
-//			manager.waypointCSVToTrajectory(list.get(i));
-//			System.out.println(Arrays.deepToString(manager.folder));
-//		}
-		
-		
-		// Please stay away from the architecture unless it does not work; only use Routine enums and not strings. Kthx. ~ab
-		// autonomousChooser.addObject("Deposit Single Box 13 [Left]", new AutoRunner(AutoRunner.Routines.DEPOSITSINGLEBOX13L));
-		// autonomousChooser.addObject("Deposit Single Box 13 [Right]", new AutoRunner(AutoRunner.Routines.DEPOSITSINGLEBOX13L));
-//		autonomousChooser.addObject("Autonomous Do Nothing", new AutoDoNothing());
-//		autonomousChooser.addDefault("Autonomous Cross Baseline 13", new AutoCrossBaseline13());
-//		autonomousChooser.addObject("Autonomous Cross Baseline 2 Curved", new AutoRunner(AutoRunner.Routines.BASELINECURVED2));
-//		autonomousChooser.addObject("Autonomous Deposit Single Box 1", new AutoRunner(AutoRunner.Routines.DEPOSITBOX1));
-//		autonomousChooser.addObject("Autonomous Deposit Single Box 2", new AutoRunner(AutoRunner.Routines.DEPOSITBOX2));
-//		autonomousChooser.addObject("Autonomous Deposit Single Box 3", new AutoRunner(AutoRunner.Routines.DEPOSITBOX3));
-		//autonomousChooser.addDefault("test", new AutoCrossBaseline2());
-		autonomousChooser.addDefault("crossbaseline2", new AutoCrossBaseline2());
+		autonomousChooser.addDefault("Box L to R ", new AutoDeliverBoxLeftRight());
 		
 		SmartDashboard.putData("Autonomous Routine Selector", autonomousChooser);
 		// SmartDashboard.putBoolean("Gyro Status", RobotMap.gyro.isConnected());
@@ -127,8 +90,8 @@ public class Robot extends IterativeRobot {
 	@Override
 	public void autonomousPeriodic() {
 		Scheduler.getInstance().run();
-		System.out.println("Left Distance: " + Robot.DRIVE_TRAIN.leftEncoder.getDistance()
-					  + "Right Distance: " + Robot.DRIVE_TRAIN.rightEncoder.getDistance());
+		//System.out.println("Left Distance: " + Robot.DRIVE_TRAIN.leftEncoder.getDistance()
+		//	+ "Right Distance: " + Robot.DRIVE_TRAIN.rightEncoder.getDistance());
 	}
 
 	@Override

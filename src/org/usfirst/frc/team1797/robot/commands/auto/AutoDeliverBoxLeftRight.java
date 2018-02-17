@@ -27,7 +27,7 @@ public class AutoDeliverBoxLeftRight extends CommandGroup {
     		addSequential(new MoveStraight(Direction.FORWARD, 0.8, 228.735));
     		addSequential(new TurnCommand(Direction.RIGHT, 0.5, 70));
     		addSequential(new MoveStraight(Direction.FORWARD, 0.8, 192));
-    		addSequential(new TurnCommand(Direction.RIGHT, 0.5, 175));
+    		addSequential(new TurnCommand(Direction.RIGHT, 0.5, 70));
     		addSequential(new MoveStraight(Direction.FORWARD, 0.8, 60.735));
     		//addSequential(new ExtendRollerPiston());
     		//addSequential(new RollerRight());
