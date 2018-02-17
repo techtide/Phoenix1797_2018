@@ -72,8 +72,9 @@ public class Drivetrain extends Subsystem {
 	
 	@SuppressWarnings("deprecation")
 	public void autoTankDrive(double leftSpeed, double rightSpeed) {
-		DifferentialDrive.tankDrive((leftSpeed-(Kp*RobotMap.gyro.getAngle())), 
-								  (rightSpeed-(Kp*RobotMap.gyro.getAngle())));
+		// tried with Kp-gyro.angle
+		DifferentialDrive.tankDrive(leftSpeed-(Kp*leftSpeed), 
+								  rightSpeed-(Kp*rightSpeed));
 		
 	}
 	
