@@ -1,6 +1,5 @@
 package org.usfirst.frc.team1797.robot;
 
-import org.usfirst.frc.team1797.robot.auto.TestDepositBox;
 import org.usfirst.frc.team1797.robot.commands.auto.AutoDeliverBoxLeftRight;
 import org.usfirst.frc.team1797.robot.subsystems.Drivetrain;
 import org.usfirst.frc.team1797.robot.subsystems.IntakeMotors;
@@ -52,8 +51,8 @@ public class Robot extends IterativeRobot {
 		autonomousChooser = new SendableChooser();
 		RobotMap.gyro.reset();
 		RobotMap.gyro.resetDisplacement();
-		// autonomousChooser.addDefault("Box L to R ", new AutoDeliverBoxLeftRight());
-		autonomousChooser.addDefault("box test", new TestDepositBox());
+		autonomousChooser.addDefault("Box L to R ", new AutoDeliverBoxLeftRight());
+		// autonomousChooser.addDefault("box test", new TestDepositBox());
 		
 		SmartDashboard.putData("Autonomous Routine Selector", autonomousChooser);
 		// SmartDashboard.putBoolean("Gyro Status", RobotMap.gyro.isConnected());
