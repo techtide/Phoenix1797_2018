@@ -1,9 +1,16 @@
 package org.usfirst.frc.team1797.robot;
 
+import org.usfirst.frc.team1797.robot.auto.TestDepositBox;
 import org.usfirst.frc.team1797.robot.commands.auto.AutoDeliverBoxLeftRight;
 import org.usfirst.frc.team1797.robot.subsystems.Drivetrain;
+import org.usfirst.frc.team1797.robot.subsystems.IntakeMotors;
+import org.usfirst.frc.team1797.robot.subsystems.IntakePistons;
+import org.usfirst.frc.team1797.robot.subsystems.Ramp;
+import org.usfirst.frc.team1797.robot.subsystems.Roller;
+import org.usfirst.frc.team1797.robot.subsystems.RollerPiston;
 
 import edu.wpi.first.wpilibj.IterativeRobot;
+import edu.wpi.first.wpilibj.PowerDistributionPanel;
 import edu.wpi.first.wpilibj.RobotDrive;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
@@ -19,15 +26,14 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
  * directory.
  */
 public class Robot extends IterativeRobot {
-
 	public static final Drivetrain DRIVE_TRAIN = new Drivetrain();
-	// public static final Roller ROLLER = new Roller();
-	// public static final IntakeMotors intakeMotors = new IntakeMotors();
-	//public static final IntakePistons intakePistons = new IntakePistons();
-	// public static final Roller ROLLER = new Roller();
-	// public static final RollerPiston ROLLER_PISTON = new RollerPiston();
-	// public static final Ramp RAMP = new Ramp();
+	public static final Roller ROLLER = new Roller();
+//	public static final IntakeMotors intakeMotors = new IntakeMotors();
+	public static final IntakePistons intakePistons = new IntakePistons();
+	public static final RollerPiston ROLLER_PISTON = new RollerPiston();
+	public static final Ramp RAMP = new Ramp();
 	public static OI oi;
+// 	static public PowerDistributionPanel p;
 
 	Command autonomousCommand;
 	SendableChooser<Command> chooser = new SendableChooser<>();
@@ -41,11 +47,13 @@ public class Robot extends IterativeRobot {
 	 */
 	@Override
 	public void robotInit() {
+// 		p = new PowerDistributionPanel();
 		oi = new OI();
 		autonomousChooser = new SendableChooser();
 		RobotMap.gyro.reset();
 		RobotMap.gyro.resetDisplacement();
-		autonomousChooser.addDefault("Box L to R ", new AutoDeliverBoxLeftRight());
+		// autonomousChooser.addDefault("Box L to R ", new AutoDeliverBoxLeftRight());
+		autonomousChooser.addDefault("box test", new TestDepositBox());
 		
 		SmartDashboard.putData("Autonomous Routine Selector", autonomousChooser);
 		// SmartDashboard.putBoolean("Gyro Status", RobotMap.gyro.isConnected());

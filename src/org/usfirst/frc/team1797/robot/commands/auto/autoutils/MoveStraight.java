@@ -12,6 +12,7 @@ public class MoveStraight extends Command {
 
 	private Direction direction;
 	private double driveSpeed;
+	private double driveSpeedL, driveSpeedR;
 	private double maxDistance;
 	
     public MoveStraight(Direction d, double speed, double distance) {
@@ -31,6 +32,8 @@ public class MoveStraight extends Command {
     		
     		//Inverts the drive speed to allow the robot to go backwards
     		driveSpeed *= direction == Direction.BACKWARD ? -1 : 1;
+    		driveSpeedL = driveSpeed;
+    		driveSpeedR = -driveSpeed;
     }
 
     // Called repeatedly when this Command is scheduled to run
@@ -41,8 +44,17 @@ public class MoveStraight extends Command {
 //    		System.out.println("Left: "+Robot.DRIVE_TRAIN.leftEncoder.getDistance()+"\t"
 //    				+ "Right: "+Robot.DRIVE_TRAIN.rightEncoder.getDistance());
 //    		
-    		System.out.println("∠: " + RobotMap.gyro.getAngle() + "˚");
-    		Robot.DRIVE_TRAIN.arcadeDrive(-driveSpeed, 0);
+    		// System.out.println("∠: " + RobotMap.gyro.getAngle() + "˚");
+    		// Robot.DRIVE_TRAIN.arcadeDrive(-driveSpeed, 0);
+    		System.out.println(driveSpeedL+"\t"+driveSpeedR);
+    		Robot.DRIVE_TRAIN.tankDrive(driveSpeedL, driveSpeedR);
+//    		if(Robot.DRIVE_TRAIN.leftEncoder.getDistance()<Robot.DRIVE_TRAIN.rightEncoder.getDistance()) {
+//    			driveSpeedL += .02;
+//    		} else {
+//    			driveSpeedR -= .02;
+//    		}
+//    		driveSpeedL -= .01;
+//    		driveSpeedR += .01;
     }
 
     // Make this return true when this Command no longer needs to run execute()

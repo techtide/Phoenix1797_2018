@@ -24,19 +24,17 @@ public class DriveCommand extends Command {
 //    		double z = Robot.oi.driverInput.getRawAxis(4);
 //    		double x = Robot.oi.driverInput.getRawAxis(1);
     		
-//    		x *= Math.abs(x);
-//    		z *= Math.abs(z);
     		//gets the raw value from the controllers.
     		double x = Robot.oi.driverInput.getRawAxis(RobotMap.DRIVER_FORWARD_AXIS);
     		double z = Robot.oi.driverInput.getRawAxis(RobotMap.DRIVER_HORIZONTAL_AXIS);
     		
-    		//function used to alter values
-    		x = Math.abs(x);
-    		z = Math.abs(z);
+//    		x *= Math.abs(x);
+//    		z *= Math.abs(z);
+    		// Robot.p.clearStickyFaults();
     		
     		//Input to drive
     		//System.out.println(Robot.oi.driverInput.getRawAxis(RobotMap.DRIVER_FORWARD_AXIS));
-    		Robot.DRIVE_TRAIN.arcadeDrive(x * RobotMap.DRIVETRAIN_SENSITIVITY, z * RobotMap.DRIVETRAIN_SENSITIVITY);
+    		Robot.DRIVE_TRAIN.arcadeDrive(-x * RobotMap.DRIVETRAIN_SENSITIVITY, z * RobotMap.DRIVETRAIN_SENSITIVITY);
     		
     		// System.out.println((Robot.DRIVE_TRAIN.leftEncoder.getRate() + Robot.DRIVE_TRAIN.rightEncoder.getRate())/2);
     }

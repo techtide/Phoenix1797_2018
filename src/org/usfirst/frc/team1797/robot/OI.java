@@ -1,7 +1,11 @@
 package org.usfirst.frc.team1797.robot;
 
-//import org.usfirst.frc.team1797.robot.commands.IntakeCommand;
-//import org.usfirst.frc.team1797.robot.commands.OuttakeCommand;
+import org.usfirst.frc.team1797.robot.commands.ExtendRollerPiston;
+// import org.usfirst.frc.team1797.robot.commands.IntakeCommand;
+// import org.usfirst.frc.team1797.robot.commands.OuttakeCommand;
+import org.usfirst.frc.team1797.robot.commands.ReverseRollerPiston;
+import org.usfirst.frc.team1797.robot.commands.RollerLeft;
+import org.usfirst.frc.team1797.robot.commands.RollerRight;
 
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
@@ -42,13 +46,20 @@ public class OI {
 	public Joystick driverInput = new Joystick(RobotMap.DRIVER_CONTROLLER_PORT);
 	public Joystick operatorInput = new Joystick(RobotMap.OPERATOR_CONTROLLER_PORT);
 	
-	public JoystickButton intakeButton = new JoystickButton(operatorInput, 0);
-	public JoystickButton outtakeButton = new JoystickButton(operatorInput, 1);
+//	public JoystickButton intakeButton = new JoystickButton(operatorInput, 1);
+//	public JoystickButton outtakeButton = new JoystickButton(operatorInput, 2);
+	public JoystickButton extendRollerPistonButton = new JoystickButton(operatorInput, 4);
+	public JoystickButton retractRollerPistonButton = new JoystickButton(operatorInput, 1);
+	public JoystickButton rollerLeftButton = new JoystickButton(operatorInput, 6);
+	public JoystickButton rollerRightButton = new JoystickButton(operatorInput, 5);
 	
 	public OI() {
-		// intakeButton.whenPressed(Robot.ROLLER_PISTON.isDown? new IntakeCommand():null);
-		// outtakeButton.whenPressed(Robot.ROLLER_PISTON.isDown? new IntakeCommand():null);
-		//intakeButton.whenPressed(new IntakeCommand());
-		//outtakeButton.whenPressed(new OuttakeCommand());
+//		intakeButton.whenPressed(Robot.ROLLER_PISTON.isDown? new IntakeCommand():null);
+//		outtakeButton.whenPressed(Robot.ROLLER_PISTON.isDown? new IntakeCommand():null);
+		extendRollerPistonButton.whenPressed(new ExtendRollerPiston());
+		retractRollerPistonButton.whenPressed(new ReverseRollerPiston());
+		rollerLeftButton.whileHeld(new RollerLeft());
+		rollerRightButton.whileHeld(new RollerRight());
+
 	}
 }
