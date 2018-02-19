@@ -1,35 +1,36 @@
 package org.usfirst.frc.team1797.robot.auto;
 
-import org.usfirst.frc.team1797.robot.commands.auto.autoutils.Direction;
-import org.usfirst.frc.team1797.robot.commands.auto.autoutils.MoveStraight;
-import org.usfirst.frc.team1797.robot.commands.auto.autoutils.TurnCommand;
-
-import edu.wpi.first.wpilibj.command.CommandGroup;
+import edu.wpi.first.wpilibj.command.Command;
 
 /**
  *
  */
-public class AutoDeliverBoxRtoR extends CommandGroup {
+public class AutoDeliverBoxRToR extends Command {
 
-    public AutoDeliverBoxRtoR() {
-        // Add Commands here:
-        // e.g. addSequential(new Command1());
-        //      addSequential(new Command2());
-        // these will run in order.
+    public AutoDeliverBoxRToR() {
+        // Use requires() here to declare subsystem dependencies
+        // eg. requires(chassis);
+    }
 
-        // To run multiple commands at the same time,
-        // use addParallel()
-        // e.g. addParallel(new Command1());
-        //      addSequential(new Command2());
-        // Command1 and Command2 will run in parallel.
+    // Called just before this Command runs the first time
+    protected void initialize() {
+    }
 
-        // A command group will require all of the subsystems that each member
-        // would require.
-        // e.g. if Command1 requires chassis, and Command2 requires arm,
-        // a CommandGroup containing them would require both the chassis and the
-        // arm.
-	    	addSequential(new MoveStraight(Direction.FORWARD, .75, 140));
-	    	addSequential(new TurnCommand(Direction.RIGHT, .5, 5));
-	    	// addSequential(new RollerLeft());
+    // Called repeatedly when this Command is scheduled to run
+    protected void execute() {
+    }
+
+    // Make this return true when this Command no longer needs to run execute()
+    protected boolean isFinished() {
+        return false;
+    }
+
+    // Called once after isFinished returns true
+    protected void end() {
+    }
+
+    // Called when another command which requires one or more of the same
+    // subsystems is scheduled to run
+    protected void interrupted() {
     }
 }
