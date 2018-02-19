@@ -9,16 +9,16 @@ import edu.wpi.first.wpilibj.command.Subsystem;
 /**
  *
  */
-public class IntakePistons extends Subsystem {
+public class IntakeWheelPistons extends Subsystem {
 
     // Put methods for controlling this subsystem
     // here. Call these from Commands.
 	
 	private DoubleSolenoid piston;
 	
-	public IntakePistons() {
-		piston = new DoubleSolenoid(RobotMap.getPort("intake_piston_1"), 
-				RobotMap.getPort("intake_piston_2"));
+	public IntakeWheelPistons() {
+		piston = new DoubleSolenoid(RobotMap.getPort("intake_wheel_piston_1"), 
+				RobotMap.getPort("intake_wheel_piston_2"));
 	}
 	
 	public void extend() {

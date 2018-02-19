@@ -13,15 +13,17 @@ public class Ramp extends Subsystem {
     // Put methods for controlling this subsystem
     // here. Call these from Commands.
 
-	private DoubleSolenoid pistonOne;
+	private DoubleSolenoid deployPiston, liftPiston;
 			
 	private long lastActuation;
 	
+	public boolean isDeployed = false;
+	
 	public Ramp() {
-		pistonOne = new DoubleSolenoid(RobotMap.getPort("ramp_piston_1"),
-				RobotMap.getPort("ramp_piston_2"));
-//		pistonTwo = new DoubleSolenoid(RobotMap.getPort("ramp_piston_2"),
-//				RobotMap.getPort("ramp_piston_2"));
+		deployPiston = new DoubleSolenoid(RobotMap.getPort("deploy_piston_1"),
+				RobotMap.getPort("deploy_piston_2"));
+		liftPiston = new DoubleSolenoid(RobotMap.getPort("lift_piston_1"),
+				RobotMap.getPort("lift_piston_2"));
 //		pistonThree = new DoubleSolenoid(RobotMap.getPort("ramp_piston_3"),
 //				RobotMap.getPort("right_piston_3"));
 	}
@@ -33,18 +35,25 @@ public class Ramp extends Subsystem {
     public long getLastActuation() {
     	return lastActuation;
     }
-    public void extend() {
-    	pistonOne.set(DoubleSolenoid.Value.kForward);
+    public void deploy() {
+    	deployPiston.set(DoubleSolenoid.Value.kForward);
+    	lastActuation = System.currentTimeMillis();
 //    	pistonTwo.set(DoubleSolenoid.Value.kForward);
 //    	pistonThree.set(DoubleSolenoid.Value.kForward);
     }
-    public void retract() {
-    	pistonOne.set(DoubleSolenoid.Value.kReverse);
-//    	pistonTwo.set(DoubleSolenoid.Value.kReverse);
-//    	pistonThree.set(DoubleSolenoid.Value.kReverse);
+//    public void retract() {
+//    	deployPiston.set(DoubleSolenoid.Value.kReverse);
+////    	pistonTwo.set(DoubleSolenoid.Value.kReverse);
+////    	pistonThree.set(DoubleSolenoid.Value.kReverse);
+//    }
+    public void lift() {
+    	liftPiston.set(DoubleSolenoid.Value.kForward);
+    	lastActuation = System.currentTimeMillis();
     }
     public void stop() {
-    	pistonOne.set(DoubleSolenoid.Value.kOff);
+    	deployPiston.set(DoubleSolenoid.Value.kOff);
+    	liftPiston.set(DoubleSolenoid.Value.kOff);
+    	lastActuation = Long.MAX_VALUE;
 //    	pistonTwo.set(DoubleSolenoid.Value.kOff);
 //    	pistonThree.set(DoubleSolenoid.Value.kOff);
     }

@@ -17,21 +17,14 @@ import edu.wpi.first.wpilibj.interfaces.Gyro;
 public class RobotMap {
 
 	// delay method
-	private static final double AUTO_DELAY_SECONDS = 0.0;
-	private static final double DELAY_SECONDS = 10.0;
+	private static final double DELAY_SECONDS = 0.0;
 	private static boolean x = false;
 
-	public static void autoDelay() {
-		long startTime = System.currentTimeMillis();
-		while (AUTO_DELAY_SECONDS * 1000 + startTime >= System.currentTimeMillis()) {}
-	}
-	
 	public static void delay() {
 		long startTime = System.currentTimeMillis();
-		while (DELAY_SECONDS * 1000 + startTime >= System.currentTimeMillis()) {
-			if(x) break;
-		}
+		while (DELAY_SECONDS * 1000 + startTime >= System.currentTimeMillis()) {}
 	}
+
 
 	// Robot controls
 	public static final int DRIVER_FORWARD_AXIS = 1;
@@ -67,50 +60,47 @@ public class RobotMap {
 	// Ex. ROBOT_HARDWARE_PORTS.put(<port id>, port number);
 	private static HashMap<String, Integer> ROBOT_HARDWARE_PORTS = new HashMap<>();
 	static {
-		// Motors
+		
+// MOTORS:
+		// Drivetrain Motors
 		ROBOT_HARDWARE_PORTS.put("left_motor_1", 0);
 		ROBOT_HARDWARE_PORTS.put("left_motor_2", 1);
 		ROBOT_HARDWARE_PORTS.put("right_motor_1", 2);
 		ROBOT_HARDWARE_PORTS.put("right_motor_2", 3);
+		
+		// Intake Motors
 		ROBOT_HARDWARE_PORTS.put("intake_motor_1", 4);
 		ROBOT_HARDWARE_PORTS.put("intake_motor_2", 5);
-
-		// Pistons
-//		ROBOT_HARDWARE_PORTS.put("f_left_piston_1", 0);
-//		ROBOT_HARDWARE_PORTS.put("f_left_piston_2", 1);
-//		ROBOT_HARDWARE_PORTS.put("f_right_piston_1", 2);
-//		ROBOT_HARDWARE_PORTS.put("f_right_piston_2", 3);
-//		ROBOT_HARDWARE_PORTS.put("f_main_piston_1", 4);
-//		ROBOT_HARDWARE_PORTS.put("f_main_piston_2", 5);
 		
-		// Intake Pistons
-		ROBOT_HARDWARE_PORTS.put("intake_piston_1", 6);
-		ROBOT_HARDWARE_PORTS.put("intake_piston_2", 7);
-
-		// Flipper Subsystem
-//		ROBOT_HARDWARE_PORTS.put("f_left_piston_1", 0);
-//		ROBOT_HARDWARE_PORTS.put("f_left_piston_2", 1);
-//		ROBOT_HARDWARE_PORTS.put("f_right_piston_1", 2);
-//		ROBOT_HARDWARE_PORTS.put("f_right_piston_2", 3);
-//		ROBOT_HARDWARE_PORTS.put("f_main_piston_1", 4);
-//		ROBOT_HARDWARE_PORTS.put("f_main_piston_2", 5); 
+		// Flipper Motor
+		ROBOT_HARDWARE_PORTS.put("flipper_motor", 6);
 		
-		// Roller Subsystem
-		ROBOT_HARDWARE_PORTS.put("roller_motor", 6);
 		
-		// Roller Piston/Raise Subsystem
-		ROBOT_HARDWARE_PORTS.put("rp_forward", 0);
-		ROBOT_HARDWARE_PORTS.put("rp_reverse", 1);
+// PISTONS:
+		// Intake Wheel Pistons
+		ROBOT_HARDWARE_PORTS.put("intake_wheel_piston_1", 0);
+		ROBOT_HARDWARE_PORTS.put("intake_wheel_piston_2", 1);
+		
+		// Intake Slide Pistons
+		ROBOT_HARDWARE_PORTS.put("intake_slide_piston_1", 2);
+		ROBOT_HARDWARE_PORTS.put("intake_slide_piston_2", 3);
 
-		// Encoders
+		// Ramp Pistons
+		ROBOT_HARDWARE_PORTS.put("deploy_piston_1", 4);
+		ROBOT_HARDWARE_PORTS.put("deploy_piston_2", 5);
+		ROBOT_HARDWARE_PORTS.put("lift_piston_1", 6);
+		ROBOT_HARDWARE_PORTS.put("lift_piston_2", 7);
+		
+// LIMIT SWITCHES
+		ROBOT_HARDWARE_PORTS.put("flipper_switch_back", 0);
+		ROBOT_HARDWARE_PORTS.put("flipper_switch_front", 1);
+		
+// ENCODERS:
 		ROBOT_HARDWARE_PORTS.put("left_encoder_1", 0);
 		ROBOT_HARDWARE_PORTS.put("left_encoder_2", 1);
 		ROBOT_HARDWARE_PORTS.put("right_encoder_1", 2);
 		ROBOT_HARDWARE_PORTS.put("right_encoder_2", 3);
-
-		// Ramp Subsystem
-		ROBOT_HARDWARE_PORTS.put("ramp_piston_1", 4);
-		ROBOT_HARDWARE_PORTS.put("ramp_piston_2", 5);
+		
 	}
 
 	public static int getPort(String id) {

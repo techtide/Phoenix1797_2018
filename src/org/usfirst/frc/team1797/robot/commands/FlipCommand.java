@@ -1,18 +1,16 @@
-package org.usfirst.frc.team1797.robot.auto;
+package org.usfirst.frc.team1797.robot.commands;
 
-import org.usfirst.frc.team1797.robot.Robot;
-import org.usfirst.frc.team1797.robot.commands.ExtendRollerPiston;
-import org.usfirst.frc.team1797.robot.commands.RollerRight;
-import org.usfirst.frc.team1797.robot.commands.auto.autoutils.AutoRollerRight;
+import org.usfirst.frc.team1797.robot.commands.teleoputils.FlipperBack;
+import org.usfirst.frc.team1797.robot.commands.teleoputils.FlipperForward;
 
 import edu.wpi.first.wpilibj.command.CommandGroup;
 
 /**
  *
  */
-public class TestDepositBox extends CommandGroup {
+public class FlipCommand extends CommandGroup {
 
-    public TestDepositBox() {
+    public FlipCommand() {
         // Add Commands here:
         // e.g. addSequential(new Command1());
         //      addSequential(new Command2());
@@ -29,9 +27,7 @@ public class TestDepositBox extends CommandGroup {
         // e.g. if Command1 requires chassis, and Command2 requires arm,
         // a CommandGroup containing them would require both the chassis and the
         // arm.
-    	requires(Robot.ROLLER);
-    	addSequential(new ExtendRollerPiston());
-    	long lastAct = System.currentTimeMillis();
-    	addSequential(new AutoRollerRight());
+    	addSequential(new FlipperForward());
+    	addSequential(new FlipperBack());
     }
 }

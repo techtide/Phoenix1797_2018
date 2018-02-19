@@ -2,15 +2,12 @@ package org.usfirst.frc.team1797.robot;
 
 import org.usfirst.frc.team1797.robot.commands.auto.AutoDeliverBoxLeftRight;
 import org.usfirst.frc.team1797.robot.subsystems.Drivetrain;
+import org.usfirst.frc.team1797.robot.subsystems.Flipper;
 import org.usfirst.frc.team1797.robot.subsystems.IntakeMotors;
-import org.usfirst.frc.team1797.robot.subsystems.IntakePistons;
+import org.usfirst.frc.team1797.robot.subsystems.IntakeWheelPistons;
 import org.usfirst.frc.team1797.robot.subsystems.Ramp;
-import org.usfirst.frc.team1797.robot.subsystems.Roller;
-import org.usfirst.frc.team1797.robot.subsystems.RollerPiston;
 
 import edu.wpi.first.wpilibj.IterativeRobot;
-import edu.wpi.first.wpilibj.PowerDistributionPanel;
-import edu.wpi.first.wpilibj.RobotDrive;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
@@ -26,13 +23,11 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
  */
 public class Robot extends IterativeRobot {
 	public static final Drivetrain DRIVE_TRAIN = new Drivetrain();
-	public static final Roller ROLLER = new Roller();
-//	public static final IntakeMotors intakeMotors = new IntakeMotors();
-	public static final IntakePistons intakePistons = new IntakePistons();
-	public static final RollerPiston ROLLER_PISTON = new RollerPiston();
+	public static final IntakeMotors intakeMotors = new IntakeMotors();
+	public static final IntakeWheelPistons intakePistons = new IntakeWheelPistons();
 	public static final Ramp RAMP = new Ramp();
+	public static final Flipper flipper = new Flipper();
 	public static OI oi;
-// 	static public PowerDistributionPanel p;
 
 	Command autonomousCommand;
 	SendableChooser<Command> chooser = new SendableChooser<>();

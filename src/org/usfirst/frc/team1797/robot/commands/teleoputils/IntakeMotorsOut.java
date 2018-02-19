@@ -1,4 +1,4 @@
-package org.usfirst.frc.team1797.robot.commands.auto.autoutils;
+package org.usfirst.frc.team1797.robot.commands.teleoputils;
 
 import org.usfirst.frc.team1797.robot.Robot;
 
@@ -7,26 +7,26 @@ import edu.wpi.first.wpilibj.command.Command;
 /**
  *
  */
-public class AutoRollerRight extends Command {
-	private long lastAct;
-    public AutoRollerRight() {
+public class IntakeMotorsOut extends Command {
+
+    public IntakeMotorsOut() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
+    	requires(Robot.intakeMotors);
     }
 
     // Called just before this Command runs the first time
     protected void initialize() {
-    	lastAct = System.currentTimeMillis();
+    	Robot.intakeMotors.intake();
     }
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	Robot.ROLLER.right();
     }
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        return System.currentTimeMillis()>lastAct+2000;
+        return true;
     }
 
     // Called once after isFinished returns true
