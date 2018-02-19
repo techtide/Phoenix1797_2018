@@ -24,9 +24,8 @@ public class TurnCommand extends Command {
     		requires(Robot.DRIVE_TRAIN);
     		this.turnDirection = d;
         this.turnRate = turnRate;
-        this.turnAngle = turnAngle;
+        this.turnAngle = (d == Direction.LEFT ) ? -turnAngle : turnAngle;
         this.targetAngle = turnAngle;
-        this.turnAngle = d == Direction.LEFT ? -turnAngle : turnAngle;
 //        System.out.println("Direction: {" + d.toString() + "}, Turn rate: {" + 
 //        		turnRate + "}, Turn angle: {" + turnAngle + "}"); 
     }
@@ -37,17 +36,19 @@ public class TurnCommand extends Command {
     		this.gyro = RobotMap.gyro;
         this.gyro.reset();
         this.gyro.resetDisplacement();
-    		//System.out.println("Target Angle: " + targetAngle);
+    		System.out.println("Target Angle: " + targetAngle);
     }
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    		//System.out.println("Angle: " + gyro.getAngle());
+    		System.out.println("Angle: " + gyro.getAngle());
     			
     		if(turnDirection == Direction.RIGHT) {
-    			Robot.DRIVE_TRAIN.tankDrive(turnRate, -turnRate);
+    			 Robot.DRIVE_TRAIN.tankDrive(turnRate, -turnRate);
+//    			Robot.DRIVE_TRAIN.errorConnectionTurn(turnRate, -turnRate);
     		} else {
-    			Robot.DRIVE_TRAIN.tankDrive(-turnRate, turnRate);
+    			 Robot.DRIVE_TRAIN.tankDrive(-turnRate, turnRate);
+//    			Robot.DRIVE_TRAIN.errorConnectionTurn(-turnRate, turnRate);
     		}
     			
     }

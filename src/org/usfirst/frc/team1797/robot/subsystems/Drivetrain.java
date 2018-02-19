@@ -45,6 +45,8 @@ public class Drivetrain extends Subsystem {
 			RobotMap.getPort("right_encoder_2"), false, Encoder.EncodingType.k4X);
 
 	public Drivetrain() {
+		resetEncoders();
+		
 		leftEncoder.setMaxPeriod(.1);
 		leftEncoder.setMinRate(10);
 		leftEncoder.setDistancePerPulse(RobotMap.ROBOT_ENCODER_DPP);
@@ -109,11 +111,11 @@ public class Drivetrain extends Subsystem {
 		DifferentialDrive.tankDrive(moveValue + result, moveValue - result);
     }
     
-    public void errorCorrectionDrive(double moveValue) {
+    public void errorConnectionTurn(double tr1, double tr2) {
 		double left = leftEncoder.getRate();
 		double right = rightEncoder.getRate();
 		double error = right - left;
 		double result = drive_kp * error;
-		DifferentialDrive.tankDrive(moveValue + result, moveValue - result);
+		DifferentialDrive.tankDrive(tr1 + result, tr2 - result);
     }
 }

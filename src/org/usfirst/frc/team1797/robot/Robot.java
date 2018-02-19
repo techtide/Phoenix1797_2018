@@ -45,6 +45,8 @@ public class Robot extends IterativeRobot {
 		autonomousChooser = new SendableChooser();
 		autonomousChooser.addDefault("Deliver Box R to L", new AutoDeliverBoxRToL());
 		// Reset the AHRS gyro angles and displacement.
+		Robot.DRIVE_TRAIN.leftEncoder.reset();
+		Robot.DRIVE_TRAIN.rightEncoder.reset();
 		RobotMap.gyro.reset();
 		RobotMap.gyro.resetDisplacement();
 	}
