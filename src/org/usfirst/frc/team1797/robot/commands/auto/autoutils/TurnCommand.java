@@ -21,6 +21,7 @@ public class TurnCommand extends Command {
 	
 	
     public TurnCommand(Direction d, double turnRate, double turnAngle) {
+    		requires(Robot.DRIVE_TRAIN);
     		this.turnDirection = d;
         this.turnRate = turnRate;
         this.turnAngle = turnAngle;
@@ -32,6 +33,7 @@ public class TurnCommand extends Command {
 
     // Called just before this Command runs the first time
     protected void initialize() {
+    	 	System.out.println("Init turn command.");
     		this.gyro = RobotMap.gyro;
         this.gyro.reset();
         this.gyro.resetDisplacement();
@@ -41,19 +43,13 @@ public class TurnCommand extends Command {
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
     		//System.out.println("Angle: " + gyro.getAngle());
-    		
-//    		if(turnDirection == Direction.RIGHT) {
-//    			Robot.DRIVE_TRAIN.tankDrive(turnRate, -turnRate);
-//    		} else {
-//    			Robot.DRIVE_TRAIN.tankDrive(-turnRate, turnRate);
-//    		}
-    			if(turnDirection == Direction.RIGHT) {
-				//Robot.DRIVE_TRAIN.tankDrive(turnRate, -turnRate);
-    				Robot.DRIVE_TRAIN.autoTankDrive(turnRate, -turnRate);
-    			} else {
-				//Robot.DRIVE_TRAIN.tankDrive(-turnRate, turnRate);
-    				Robot.DRIVE_TRAIN.autoTankDrive(-turnRate, turnRate);
-    			}
+    			
+    		if(turnDirection == Direction.RIGHT) {
+    			Robot.DRIVE_TRAIN.tankDrive(turnRate, -turnRate);
+    		} else {
+    			Robot.DRIVE_TRAIN.tankDrive(-turnRate, turnRate);
+    		}
+    			
     }
 
     // Make this return true when this Command no longer needs to run execute()

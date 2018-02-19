@@ -65,8 +65,8 @@ public class RobotMap {
 		// Drivetrain Motors
 		ROBOT_HARDWARE_PORTS.put("left_motor_1", 0);
 		ROBOT_HARDWARE_PORTS.put("left_motor_2", 1);
-		ROBOT_HARDWARE_PORTS.put("right_motor_1", 2);
-		ROBOT_HARDWARE_PORTS.put("right_motor_2", 3);
+		ROBOT_HARDWARE_PORTS.put("right_motor_1", 3);
+		ROBOT_HARDWARE_PORTS.put("right_motor_2", 6);
 		
 		// Intake Motors
 		ROBOT_HARDWARE_PORTS.put("intake_motor_1", 4);

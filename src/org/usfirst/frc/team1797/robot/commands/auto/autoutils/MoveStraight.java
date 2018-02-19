@@ -6,10 +6,10 @@ import org.usfirst.frc.team1797.robot.RobotMap;
 import edu.wpi.first.wpilibj.command.Command;
 
 /**
- *
+ * @version 2.0, changes by techtide, to allow PID and straight driving.
  */
-public class MoveStraight extends Command {
 
+public class MoveStraight extends Command {
 	private Direction direction;
 	private double driveSpeed;
 	private double driveSpeedL, driveSpeedR;
@@ -22,55 +22,29 @@ public class MoveStraight extends Command {
     		requires(Robot.DRIVE_TRAIN);
     }
     
-    // Called just before this Command runs the first time
     protected void initialize() {
-    		System.out.println();
-    		System.out.println("[INFO] Initializing moving command!");
-    		
-    		//Resetting encoders to allow precise measurements
     		Robot.DRIVE_TRAIN.resetEncoders();
     		
-    		//Inverts the drive speed to allow the robot to go backwards
-    		driveSpeed *= direction == Direction.BACKWARD ? -1 : 1;
+    		// Uses a terenary operator to reverse the direction for backwards speeds.
+    		driveSpeed = (direction == Direction.BACKWARD) ? (driveSpeed) : (-driveSpeed);
     		driveSpeedL = driveSpeed;
     		driveSpeedR = -driveSpeed;
     }
 
-    // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    		//Updates the drivetrain to move
-    	
-    		// System.out.println("Distance: " + Robot.DRIVE_TRAIN.getAverageEncoderDistance());
-//    		System.out.println("Left: "+Robot.DRIVE_TRAIN.leftEncoder.getDistance()+"\t"
-//    				+ "Right: "+Robot.DRIVE_TRAIN.rightEncoder.getDistance());
-//    		
-    		// System.out.println("∠: " + RobotMap.gyro.getAngle() + "˚");
-    		// Robot.DRIVE_TRAIN.arcadeDrive(-driveSpeed, 0);
-    		System.out.println(driveSpeedL+"\t"+driveSpeedR);
-    		Robot.DRIVE_TRAIN.tankDrive(driveSpeedL, driveSpeedR);
-//    		if(Robot.DRIVE_TRAIN.leftEncoder.getDistance()<Robot.DRIVE_TRAIN.rightEncoder.getDistance()) {
-//    			driveSpeedL += .02;
-//    		} else {
-//    			driveSpeedR -= .02;
-//    		}
-//    		driveSpeedL -= .01;
-//    		driveSpeedR += .01;
+    		// Calls the error correction drive (uses PID) to correct driving straight.
+    		Robot.DRIVE_TRAIN.errorCorrectionDrive(driveSpeed);
+//    	Robot.DRIVE_TRAIN.tankDrive(driveSpeedL, driveSpeedR);
     }
 
-    // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-    		//checks to see if the robot has passed the difference
-        return Robot.DRIVE_TRAIN.getAverageEncoderDistance() > maxDistance;
+    		return Robot.DRIVE_TRAIN.getAverageEncoderDistance() > maxDistance;
     }
 
-    // Called once after isFinished returns true
     protected void end() {
-    		//stops the motors.
     		Robot.DRIVE_TRAIN.arcadeDrive(0, 0);
     }
 
-    // Called when another command which requires one or more of the same
-    // subsystems is scheduled to run
     protected void interrupted() {
     		end();
     }

@@ -1,7 +1,7 @@
 package org.usfirst.frc.team1797.robot;
 
-import org.usfirst.frc.team1797.robot.commands.FlipCommand;
-import org.usfirst.frc.team1797.robot.commands.RampCommand;
+//import org.usfirst.frc.team1797.robot.commands.FlipCommand;
+//import org.usfirst.frc.team1797.robot.commands.RampCommand;
 // import org.usfirst.frc.team1797.robot.commands.IntakeCommand;
 // import org.usfirst.frc.team1797.robot.commands.OuttakeCommand;
 
@@ -50,7 +50,7 @@ public class OI {
 	public JoystickButton flipButton = new JoystickButton(operatorInput, 0);
 	
 	public OI() {
-		rampButton.whenPressed(new RampCommand());
-		flipButton.whenPressed(new FlipCommand());
+//		rampButton.whenPressed(new RampCommand());
+//		flipButton.whenPressed(new FlipCommand());
 	}
 }

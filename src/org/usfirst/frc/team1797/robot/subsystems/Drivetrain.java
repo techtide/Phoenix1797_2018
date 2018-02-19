@@ -3,11 +3,8 @@ package org.usfirst.frc.team1797.robot.subsystems;
 import org.usfirst.frc.team1797.robot.RobotMap;
 import org.usfirst.frc.team1797.robot.commands.DriveCommand;
 
-import com.ctre.phoenix.motorcontrol.can.WPI_VictorSPX;
-
 import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.SpeedControllerGroup;
-import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.VictorSP;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
@@ -20,22 +17,23 @@ public class Drivetrain extends Subsystem {
     // Put methods for controlling this subsystem
     // here. Call these from Commands.
 	
-//	private final VictorSP left1 = new VictorSP(RobotMap.getPort("left_motor_1"));
-//	private final VictorSP left2 = new VictorSP(RobotMap.getPort("left_motor_2"));
-//	private final VictorSP right1 = new VictorSP(RobotMap.getPort("right_motor_1"));
-//	private final VictorSP right2 = new VictorSP(RobotMap.getPort("right_motor_2"));
+	private final VictorSP left1 = new VictorSP(RobotMap.getPort("left_motor_1"));
+	private final VictorSP left2 = new VictorSP(RobotMap.getPort("left_motor_2"));
+	private final VictorSP right1 = new VictorSP(RobotMap.getPort("right_motor_1"));
+	private final VictorSP right2 = new VictorSP(RobotMap.getPort("right_motor_2"));
 	
-	private final WPI_VictorSPX left1 = new WPI_VictorSPX(RobotMap.getPort("left_motor_1"));
-	private final WPI_VictorSPX left2 = new WPI_VictorSPX(RobotMap.getPort("left_motor_2"));
-	private final WPI_VictorSPX right1 = new WPI_VictorSPX(RobotMap.getPort("right_motor_1"));
-	private final WPI_VictorSPX right2 = new WPI_VictorSPX(RobotMap.getPort("right_motor_2"));
+//	private final WPI_VictorSPX left1 = new WPI_VictorSPX(RobotMap.getPort("left_motor_1"));
+//	private final WPI_VictorSPX right1 = new WPI_VictorSPX(RobotMap.getPort("right_motor_1"));
+//	private final WPI_VictorSPX left2 = new WPI_VictorSPX(RobotMap.getPort("left_motor_2"));
+//	private final WPI_VictorSPX right2 = new WPI_VictorSPX(RobotMap.getPort("right_motor_2"));
 	
 	private final SpeedControllerGroup left = new SpeedControllerGroup(left1, left2);
 	private final SpeedControllerGroup right = new SpeedControllerGroup(right1, right2);
 	
 	private final DifferentialDrive DifferentialDrive = new DifferentialDrive(left, right);
 	
-	private final double Kp = 0.03;
+	private double drive_kp;
+	
 	
 	@SuppressWarnings("deprecation")
 	// public final RobotDrive robotDrive = new RobotDrive(left, right);
@@ -61,6 +59,8 @@ public class Drivetrain extends Subsystem {
 		rightEncoder.setSamplesToAverage(7);
 		leftEncoder.reset();
 		
+		drive_kp = 0.01;
+		
 //		left1.setSafetyEnabled(false);
 //		left2.setSafetyEnabled(false);
 //		right1.setSafetyEnabled(false);
@@ -75,21 +75,6 @@ public class Drivetrain extends Subsystem {
 	public void arcadeDrive(double x, double z){
 		DifferentialDrive.arcadeDrive(x, z);
 	}
-	
-	@SuppressWarnings("deprecation")
-	public void autoTankDrive(double leftSpeed, double rightSpeed) {
-		// tried with Kp-gyro.angle
-		DifferentialDrive.tankDrive(leftSpeed-(Kp*leftSpeed), 
-								  rightSpeed-(Kp*rightSpeed));
-		
-	}
-	
-//	@SuppressWarnings("deprecation")
-//	public void proportionalArcadeDrive(double speed, double turnRate){
-//		robotDrive.drive(speed, (turnRate));
-//		Timer.delay(0.01);
-//	}
-	
 	public void tankDrive(double leftSpeed, double rightSpeed) {
 		DifferentialDrive.tankDrive(leftSpeed, rightSpeed);
 	}
@@ -114,5 +99,21 @@ public class Drivetrain extends Subsystem {
         // Set the default command for a subsystem here.
         //setDefaultCommand(new MySpecialCommand());
     		setDefaultCommand(new DriveCommand());
+    }
+    
+    public void errorCorrectionDrive(double moveValue) {
+    		double left = leftEncoder.getRate();
+		double right = rightEncoder.getRate();
+		double error = right - left;
+		double result = drive_kp * error;
+		DifferentialDrive.tankDrive(moveValue + result, moveValue - result);
+    }
+    
+    public void errorCorrectionDrive(double moveValue) {
+		double left = leftEncoder.getRate();
+		double right = rightEncoder.getRate();
+		double error = right - left;
+		double result = drive_kp * error;
+		DifferentialDrive.tankDrive(moveValue + result, moveValue - result);
     }
 }

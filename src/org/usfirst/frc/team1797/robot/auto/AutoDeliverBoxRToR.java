@@ -3,7 +3,7 @@ package org.usfirst.frc.team1797.robot.auto;
 import edu.wpi.first.wpilibj.command.CommandGroup;
 
 import org.usfirst.frc.team1797.robot.Robot;
-import org.usfirst.frc.team1797.robot.commands.FlipCommand;
+//import org.usfirst.frc.team1797.robot.commands.FlipCommand;
 import org.usfirst.frc.team1797.robot.commands.auto.autoutils.*;;
 
 /**
@@ -20,6 +20,6 @@ public class AutoDeliverBoxRToR extends CommandGroup {
 		// Reverse so the robot hits the fence.
 		addSequential(new MoveStraight(Direction.BACKWARD, 0.5, 85.25));
 		// Deliver the box and throw it backwards.
-		addSequential(new FlipCommand());
+//		addSequential(new FlipCommand());
 	}
 }

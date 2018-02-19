@@ -1,10 +1,11 @@
 package org.usfirst.frc.team1797.robot;
 
+import org.usfirst.frc.team1797.robot.auto.AutoDeliverBoxRToL;
 import org.usfirst.frc.team1797.robot.subsystems.Drivetrain;
-import org.usfirst.frc.team1797.robot.subsystems.Flipper;
-import org.usfirst.frc.team1797.robot.subsystems.IntakeMotors;
-import org.usfirst.frc.team1797.robot.subsystems.IntakeWheelPistons;
-import org.usfirst.frc.team1797.robot.subsystems.Ramp;
+//import org.usfirst.frc.team1797.robot.subsystems.Flipper;
+//import org.usfirst.frc.team1797.robot.subsystems.IntakeMotors;
+//import org.usfirst.frc.team1797.robot.subsystems.IntakeWheelPistons;
+//import org.usfirst.frc.team1797.robot.subsystems.Ramp;
 
 import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.command.Command;
@@ -22,10 +23,10 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
  */
 public class Robot extends IterativeRobot {
 	public static final Drivetrain DRIVE_TRAIN = new Drivetrain();
-	public static final IntakeMotors intakeMotors = new IntakeMotors();
-	public static final IntakeWheelPistons intakePistons = new IntakeWheelPistons();
-	public static final Ramp RAMP = new Ramp();
-	public static final Flipper flipper = new Flipper();
+//	public static final IntakeMotors intakeMotors = new IntakeMotors();
+//	public static final IntakeWheelPistons intakePistons = new IntakeWheelPistons();
+//	public static final Ramp RAMP = new Ramp();
+//	public static final Flipper flipper = new Flipper();
 	public static OI oi;
 
 	Command autonomousCommand;
@@ -42,7 +43,7 @@ public class Robot extends IterativeRobot {
 	public void robotInit() {
 		oi = new OI();
 		autonomousChooser = new SendableChooser();
-		
+		autonomousChooser.addDefault("Deliver Box R to L", new AutoDeliverBoxRToL());
 		// Reset the AHRS gyro angles and displacement.
 		RobotMap.gyro.reset();
 		RobotMap.gyro.resetDisplacement();
@@ -89,6 +90,8 @@ public class Robot extends IterativeRobot {
 		Scheduler.getInstance().run();
 		//System.out.println("Left Distance: " + Robot.DRIVE_TRAIN.leftEncoder.getDistance()
 		//	+ "Right Distance: " + Robot.DRIVE_TRAIN.rightEncoder.getDistance());
+		System.out.println("Left encoder: " + Robot.DRIVE_TRAIN.leftEncoder.getDistance() + "    " 
+				+ "Right encoder: " + Robot.DRIVE_TRAIN.rightEncoder.getDistance());
 	}
 
 	@Override
