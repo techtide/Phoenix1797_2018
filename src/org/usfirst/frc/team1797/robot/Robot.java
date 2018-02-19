@@ -1,6 +1,5 @@
 package org.usfirst.frc.team1797.robot;
 
-import org.usfirst.frc.team1797.robot.commands.auto.AutoDeliverBoxLeftRight;
 import org.usfirst.frc.team1797.robot.subsystems.Drivetrain;
 import org.usfirst.frc.team1797.robot.subsystems.Flipper;
 import org.usfirst.frc.team1797.robot.subsystems.IntakeMotors;
@@ -41,18 +40,12 @@ public class Robot extends IterativeRobot {
 	 */
 	@Override
 	public void robotInit() {
-// 		p = new PowerDistributionPanel();
 		oi = new OI();
 		autonomousChooser = new SendableChooser();
+		
+		// Reset the AHRS gyro angles and displacement.
 		RobotMap.gyro.reset();
 		RobotMap.gyro.resetDisplacement();
-		autonomousChooser.addDefault("Box L to R ", new AutoDeliverBoxLeftRight());
-		// autonomousChooser.addDefault("box test", new TestDepositBox());
-		
-		SmartDashboard.putData("Autonomous Routine Selector", autonomousChooser);
-		// SmartDashboard.putBoolean("Gyro Status", RobotMap.gyro.isConnected());
-		SmartDashboard.putString("Gyro Status", RobotMap.gyro.isConnected()? "connected":"not connected");
-		SmartDashboard.putNumber("Gyro Angle (deg)", RobotMap.gyro.getAngle());
 	}
 
 	/**
